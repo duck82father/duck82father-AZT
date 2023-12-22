@@ -1,0 +1,82 @@
+﻿-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+
+-- Users Table Create SQL
+-- 테이블 생성 SQL - Users
+CREATE TABLE Users
+(
+    `id`        INT             NOT NULL    AUTO_INCREMENT COMMENT '번호', 
+    `username`  VARCHAR(50)     NOT NULL    COMMENT '이름', 
+    `password`  VARCHAR(150)    NOT NULL    COMMENT '비밀번호', 
+    `email`     VARCHAR(120)    NOT NULL    COMMENT '이메일', 
+     PRIMARY KEY (id)
+);
+
+-- 테이블 Comment 설정 SQL - Users
+ALTER TABLE Users COMMENT '사용자 정보';
+
+-- Unique Index 설정 SQL - Users(username, email)
+CREATE UNIQUE INDEX UQ_Users_1
+    ON Users(username, email);
+
+
+-- AzQuiz Table Create SQL
+-- 테이블 생성 SQL - AzQuiz
+CREATE TABLE AzQuiz
+(
+    `id`      INT             NOT NULL    AUTO_INCREMENT COMMENT '번호', 
+    `quiz`    VARCHAR(150)    NOT NULL    COMMENT '퀴즈', 
+    `answer`  VARCHAR(50)     NOT NULL    COMMENT '정답', 
+    `hint`    VARCHAR(12)     NOT NULL    COMMENT '힌트', 
+     PRIMARY KEY (id)
+);
+
+-- 테이블 Comment 설정 SQL - AzQuiz
+ALTER TABLE AzQuiz COMMENT '아재개그 퀴즈';
+
+
+-- ChatbotAnswers Table Create SQL
+-- 테이블 생성 SQL - ChatbotAnswers
+CREATE TABLE ChatbotAnswers
+(
+    `id`      INT            NOT NULL    AUTO_INCREMENT COMMENT '번호', 
+    `intent`  VARCHAR(50)    NOT NULL    COMMENT '의도', 
+    `ner`     VARCHAR(50)    NOT NULL    COMMENT '개체명', 
+    `answer`  VARCHAR(50)    NOT NULL    COMMENT '답변', 
+     PRIMARY KEY (id)
+);
+
+-- 테이블 Comment 설정 SQL - ChatbotAnswers
+ALTER TABLE ChatbotAnswers COMMENT '챗봇 답변';
+
+
+-- Solved Table Create SQL
+-- 테이블 생성 SQL - Solved
+CREATE TABLE Solved
+(
+    `user_id`  INT    NOT NULL    COMMENT '사용자', 
+    `quiz_id`  INT    NOT NULL    COMMENT '맞춘 퀴즈', 
+     PRIMARY KEY (user_id, quiz_id)
+);
+
+-- 테이블 Comment 설정 SQL - Solved
+ALTER TABLE Solved COMMENT '정답처리';
+
+-- Foreign Key 설정 SQL - Solved(user_id) -> Users(id)
+ALTER TABLE Solved
+    ADD CONSTRAINT FK_Solved_user_id_Users_id FOREIGN KEY (user_id)
+        REFERENCES Users (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - Solved(user_id)
+-- ALTER TABLE Solved
+-- DROP FOREIGN KEY FK_Solved_user_id_Users_id;
+
+-- Foreign Key 설정 SQL - Solved(quiz_id) -> AzQuiz(id)
+ALTER TABLE Solved
+    ADD CONSTRAINT FK_Solved_quiz_id_AzQuiz_id FOREIGN KEY (quiz_id)
+        REFERENCES AzQuiz (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - Solved(quiz_id)
+-- ALTER TABLE Solved
+-- DROP FOREIGN KEY FK_Solved_quiz_id_AzQuiz_id;
+
+

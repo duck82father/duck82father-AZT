@@ -1,0 +1,549 @@
+@font-face {
+    font-family: 'EliceDigitalBaeum_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EliceDigitalBaeum_Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Jeongnimsaji-R';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/Jeongnimsaji-R.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+html,
+body {
+    scroll-behavior: smooth;
+    /* 스크롤 부드럽게 이동하는 CSS 속성 */
+}
+
+body {
+    overflow: hidden;
+}
+/* 
+#comment .input::placeholder{
+    color: #a9afbb, i !important;;
+} */
+
+.nav-rank {
+    border-right: 0.5px solid #7291ec;
+    padding-right: 15px;
+
+    @media screen and (max-width: 1000px) {
+        display: none;
+    }
+}
+
+
+.rank-text {
+    padding: 20px;
+    font-family: 'EliceDigitalBaeum_Bold';
+    color: #203bd4;
+    font-size: 2.5em;
+    margin-right: 20px;
+}
+
+.rank-text-user {
+    padding-top: 20px;
+    padding-bottom: 4px;
+    font-family: 'EliceDigitalBaeum_Bold';
+    color: #ffffff;
+    font-size: 2.5em;
+}
+
+.rank-number-user {
+    color:#f3f169;
+    padding-left:20px;
+    padding-right:10px;
+    font-size: 2em;
+}
+
+.rank-scores-number{
+    color: #3551f1;
+}
+
+.rank-scores-text {
+    margin-top:25px;
+    border-top: 1px solid #acbeda;
+    padding-top:25px;
+    font-family: 'EliceDigitalBaeum_Bold';
+    color: #8f9eb3;
+    font-size: 1.2em;
+}
+
+.rank-scores-box {
+    padding: 2rem 2rem;
+    margin-top: 2rem;
+    /* margin-left:0.6rem;
+    margin-right:0.6rem; */
+    border: 1px solid transparent;
+    border-radius: 0.6rem;
+    color: #091181;
+    background-color: #e1f0ff;
+    border-color: #e1e9ee;
+    box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.05);
+}
+
+.rank-group {
+    height: 4.5rem;
+    box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.075);
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.rank-circle {
+    background-color: #acbeda;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.rank-circle-solved {
+    transition: background-color 0.3s ease-in-out;
+    background-color: #fffb08;
+    outline: 1px solid #ebd405;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.rank-input-box {
+    padding: 1.5rem 1.5rem;
+    margin-top: 1.5rem;
+    /* margin-left:0.6rem;
+    margin-right:0.6rem; */
+    border-radius: 0.6rem;
+    color: #091181;
+    background-color: #b2daff;
+    border-color: #e1e9ee;
+    box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.05);
+}
+
+
+.rank-1st-number:disabled {
+    background-color: #203bd4;
+}
+
+.rank-1st-content:disabled {
+    background-color: #3c58f7;
+    border: 1px solid blue;
+}
+
+.rank-nth-number:disabled {
+    color: #605f69;
+    background-color: #ecf1fd;
+    border: 1px solid #aaa;
+}
+
+.rank-nth-content:disabled {
+    color: #605f69;
+    background-color: #fff;
+    border: 1px solid #aaa;
+}
+
+.btn-group button:disabled {
+    opacity: 100%;
+}
+
+.scores {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: 1000px) {
+        display: none;
+    }
+}
+
+.scores-number {
+    color: #f3f169;
+}
+
+.scores-text {
+    padding: 20px;
+    font-family: 'EliceDigitalBaeum_Bold';
+    color: #c0ccec;
+    font-size: 1.2em;
+    border-right: 0.5px solid #7291ec;
+    margin-right: 20px;
+}
+
+.scores-circles {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.circles {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    background-color: #7291ec;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 3px;
+}
+
+.circle-solved {
+    transition: background-color 0.3s ease-in-out;
+    background-color: #f3f169;
+    outline: 2px solid #1521c2;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 3px;
+}
+
+
+.nav-font {
+    font-family: 'EliceDigitalBaeum_Bold';
+    letter-spacing: 0.1rem;
+}
+
+.introduce-font {
+    font-family: 'Jeongnimsaji-R';
+}
+
+.login-box {
+    padding: 1rem 3.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    color: #091181;
+    background-color: #f7fbff;
+    border-color: #e1e9ee;
+    width: 30rem;
+    box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.05);
+}
+
+.signup-box {
+    padding: 1rem 3.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    color: #565763;
+    background-color: #fcfcfc;
+    border-color: #e0e0e0;
+    width: 30rem;
+    box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.05);
+}
+
+.nav-line-height {
+    line-height: 1.5;
+}
+
+.text-quiz {
+    color: #131dac;
+}
+
+.nav-gradient-background-gray {
+    background: linear-gradient(-30deg, #545c63, #525270, #434d5c, #6e7794);
+    background-size: 400% 400%;
+    animation: gradient 9s ease infinite;
+}
+
+.nav-gradient-background {
+    background: linear-gradient(-30deg, #121b9c, #1622ce, #111a97, #122dc5);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.nav-background-behind {
+    position: fixed;
+    width: 100%;
+    height: 85px;
+}
+
+.card {
+    border: none;
+    box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.075);
+}
+
+.card-footer:last-child {
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.selected_quiz {
+    color: #916e07;
+    background-color: #faf4dc;
+    outline: solid 6px rgb(255, 239, 97, 0.75);
+}
+
+.quizsuccess-top {
+    transition: background-color 0.5s ease-in-out;
+    background-color: #3c58f7;
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.6rem;
+}
+
+.quizsuccess-top .quizsuccess-text {
+    transition: color 0.5s ease-in-out;
+    color: #FFFFFF !important;
+}
+
+.quizsuccess-number {
+    transition: color 0.5s ease-in-out;
+    color: #9aace7 !important;
+}
+
+.quizsuccess {
+    transition: background-color 0.5s ease-in-out;
+    background-color: #203bd4;
+    border-top: 0;
+}
+
+.quizBoxSelect {
+    opacity: 1;
+}
+
+.whole_wrap {
+    overflow: hidden;
+    height: 100vh;
+    /* 화면 높이로 설정 */
+    padding-top: 85px;
+}
+
+.quiz_wrap {
+    height: 93vh;
+    /* 화면 높이로 설정 */
+    overflow-y: auto;
+    /* 세로 스크롤 유지 */
+    -ms-overflow-style: none;
+    background-color: #d2ecfd;
+
+    @media screen and (max-width: 1000px) {
+        display: none;
+    }
+}
+
+.quiz_wrap::-webkit-scrollbar {
+    display: none;
+}
+
+.chat_wrap {
+    width: 84%;
+    font-size: 13px;
+    color: #333;
+    margin: 60px 100px 56px 56px;
+    overflow: hidden;
+    height: 80vh;
+    /* 화면 높이로 설정 */
+
+    @media screen and (max-width: 1000px) {
+        height: 100%;
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0;
+    }
+}
+
+.chat_wrap .inner {
+    background-color: #c1e4fc;
+    border: #b5dbf3 2px solid;
+    border-radius: 0.6rem;
+    padding: 36px;
+    overflow-y: scroll;
+    /* overflow: hidden; */
+    height: 66vh;
+
+    @media screen and (max-width: 1000px) {
+        min-height: 65dvh;
+        padding: 20px;
+        padding-top: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.6rem;
+        border-bottom-left-radius: 0.6rem;
+    }
+}
+
+.chat_wrap .inner::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.chat_wrap .inner::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.chat_wrap .inner::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #93cdfa;
+}
+
+.chat_wrap .inner::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+.chat_wrap .p-4 {
+    @media screen and (max-width: 1000px) {
+        padding: 1.2rem !important
+    }
+}
+
+.chat_wrap .item {
+    margin-top: 15px;
+
+    @media screen and (max-width: 1000px) {
+        margin-top: 10px;
+    }
+}
+
+.chat_wrap .item:first-child {
+    margin-top: 0px;
+}
+
+.chat_wrap .item .box {
+    display: inline-block;
+    max-width: 400px;
+    position: relative;
+
+    @media screen and (max-width: 1000px) {
+        max-width: 200px;
+    }
+}
+
+.chat_wrap .item .box::before {
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 9px;
+    border-top: 0px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #fff;
+}
+
+.chat_wrap .item .box .msg {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: left;
+    word-break: keep-all;
+    line-height: 1.5em;
+}
+
+.chat_wrap .item .box .h6 {
+    @media screen and (max-width: 1000px) {
+        font-size: 1em;
+    }
+}
+
+.chat_wrap .item .box .time {
+    font-size: 11px;
+    color: #6c6c6d;
+    position: absolute;
+    right: -75px;
+    bottom: 17px;
+    width: 70px;
+}
+
+.chat_wrap .item.mymsg {
+    text-align: right;
+}
+
+.chat_wrap .item.mymsg .box::before {
+    left: auto;
+    right: -8px;
+    border-left: 8px solid #ffef61;
+    border-right: 0;
+}
+
+.chat_wrap .item.mymsg .box .msg {
+    background: #ffef61;
+}
+
+.chat_wrap .item.mymsg .box .time {
+    right: auto;
+    left: -75px;
+}
+
+.chat_wrap .item .box {
+    transition: all .3s ease-out;
+    margin: 0 0 0 20px;
+    opacity: 0;
+}
+
+.chat_wrap .item.mymsg .box {
+    transition: all .3s ease-out;
+    margin: 0 20px 0 0;
+}
+
+.chat_wrap .item.on .box {
+    margin: 0;
+    opacity: 1;
+}
+
+.chatbotinput {
+    border: 0;
+    width: 100%;
+    background: #f0f0f0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    text-align: center;
+
+    @media screen and (max-width: 1000px) {
+        margin-top: 15px;
+        font-size: 1em;
+    }
+}
+
+input:focus {
+    outline: none;
+}
+
+.chatbotinput::placeholder {
+    color: #999;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 1rem;
+}
+
+.footer-text {
+    margin-top: 10px;
+
+    @media screen and (max-width: 1000px) {
+        margin: auto;
+        word-break: keep-all;
+        width: 75%;
+        line-height: 1.5em;
+        font-size: 0.75rem !important;
+        margin-top: 5px;
+        font-size: 1em;
+    }
+
+}
+
+.text-nav {
+    color: #c4cef0 !important;
+}

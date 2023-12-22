@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="py-4"></div>
+    <div class="py-5"></div>
+    <div class="py-5 text-center">
+        <h1 class="introduce-font lh-base">
+            이제 <b>당신의 아재력</b>을 증명할 시간입니다.<br>
+            <b class="font-color-navi">120문항의 아재개그</b>에 도전하세요!
+        </h1>
+    </div>
+    <div class="col-4 mx-auto mt-2 login-box">
+        <div class="text-center py-4">
+            <h4 class="mb-3 nav-font">로그인</h4>
+        </div>
+        <form method="post">
+            {{ form.csrf_token }}
+            {% include "form_errors.html" %}
+            <div class="mb-3">
+                <label for="username" class="mb-2 fw-bold">사용자 이름</label>
+                <input type="text" class="form-control mb-4" name="username" id="username"
+                    value="{{ form.username.data or '' }}">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="mb-2 fw-bold">비밀번호</label>
+                <input type="password" class="form-control mb-4" name="password" id="password"
+                    value="{{ form.password.data or '' }}">          
+            </div>
+            <div class="text-center py-4">
+                <button type="submit" class="btn btn-primary">로그인</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
