@@ -248,6 +248,19 @@ body {
     color: #131dac;
 }
 
+.mobile-avoid{
+    @media screen and (max-width: 1000px) {
+        display: none;
+    }
+}
+
+.mobile-show{
+    display: none;
+    @media screen and (max-width: 1000px) {
+        display:contents;
+    }
+}
+
 .nav-gradient-background-gray {
     background: linear-gradient(-30deg, #545c63, #525270, #434d5c, #6e7794);
     background-size: 400% 400%;
@@ -535,7 +548,7 @@ input:focus {
     @media screen and (max-width: 1000px) {
         margin: auto;
         word-break: keep-all;
-        width: 75%;
+        width: 84%;
         line-height: 1.5em;
         font-size: 0.75rem !important;
         margin-top: 5px;

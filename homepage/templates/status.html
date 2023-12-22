@@ -55,9 +55,8 @@
                 <input type="text" class="mymsg h5 p-4 chatbotinput" placeholder="내용 입력 후 엔터를 누르세요">
                 <div class="text-center">
                     <p class="footer-text">문제를&nbsp;풀고&nbsp;싶다면
-                        <b class="fw-bold text-quiz">번호 [1 ~ 120번]</b>를&nbsp;&nbsp;/&nbsp;&nbsp;어려울 땐
-                        <b class="fw-bold text-quiz">힌트</b> 요청을&nbsp;&nbsp;/&nbsp;&nbsp;배고플땐&nbsp;음식을
-                        <b class="fw-bold text-quiz">주문</b>해보세요&nbsp;👍
+                        <b class="fw-bold text-quiz">번호 [1 ~ 120번]</b>를<b class="mobile-show"><br></b><b class="mobile-avoid">&nbsp;&nbsp;/&nbsp;&nbsp;</b>어려울 땐
+                        <b class="fw-bold text-quiz">힌트</b> 요청을&nbsp;해보세요👍
                     </p>
                 </div>
             </div>
@@ -282,9 +281,8 @@
             firstUnSolvedDiv.scrollIntoView({ behavior: 'smooth', block: "center", inline: "center" })
         }
 
-        sendMessage('<b class="fw-bold">{{ g.user.username }}</b>님 환영합니다!', 'yourmsg')
+        sendMessage('<b class="fw-bold">{{ g.user.username }}</b>님 환영합니다!🖐️', 'yourmsg')
         sendMessage('<b class="fw-bold">아재퀴즈 문제</b>를 선택하세요<br>[ 입력 : 1 ~ 120번 ]', 'yourmsg')
-        sendMessage('<b class="fw-bold">Tip</b> : 배고플땐 음식을 <b class="fw-bold text-danger">"주문"</b>해보세요🍜', 'yourmsg')
         goToFirstUnSolvedDiv()
 
     });

@@ -45,14 +45,6 @@ class Solved(db.Model):
     quiz_id = db.Column(db.Integer, db.ForeignKey('azquiz.id', ondelete='CASCADE'), primary_key=True)
     quiz = db.relationship('azquiz', backref=db.backref('solved_set', lazy=True))
 
-
-
-# 참고 : 외래키 지정
-# question_id = db.Column(db.Integer, db.ForeignKey('question.id', ondelete='CASCADE'))
-# question = db.relationship('Question', backref=db.backref('answer_set'))
-
-
-
 # class UserAnswers(db.Model):
 #     __tablename__ = 'user_answers'
 #     id = db.Column(db.Integer, primary_key=True)

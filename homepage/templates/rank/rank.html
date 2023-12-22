@@ -9,11 +9,17 @@
             <div class="d-flex flex-wrap justify-content-center align-items-start mx-3 my-4 p-3">
                 <div class="container-fruid ms-2">
                     <div class="mx-2 my-4 text-center">
-                        <h1 class="rank-text-user">현재&nbsp;&nbsp;<b class="text-white text-opacity-75">{{
-                                g.user.username }}</b>&nbsp;&nbsp;님의 순위는</h1>
-                        <h1 class="rank-text-user"><b class="rank-number-user">
-                                {% for user in all_user_data %}{% if user.id == g.user.id %}{{ loop.index }}{% endif
-                                %}{% endfor %}</b>위 입니다.</h1>
+                        {% if solved_quiz_ids == [] %}
+                            <h1 class="rank-text-user">현재&nbsp;&nbsp;<b class="text-white text-opacity-75">{{
+                                    g.user.username }}</b>&nbsp;&nbsp;님은</h1>
+                            <h1 class="rank-text-user">풀어낸 퀴즈가 없습니다.</h1>
+                        {% else %}
+                            <h1 class="rank-text-user">현재&nbsp;&nbsp;<b class="text-white text-opacity-75">{{
+                                    g.user.username }}</b>&nbsp;&nbsp;님의 순위는</h1>
+                            <h1 class="rank-text-user"><b class="rank-number-user">
+                                    {% for user in all_user_data %}{% if user.id == g.user.id %}{{ loop.index }}{% endif
+                                    %}{% endfor %}</b>위 입니다.</h1>
+                        {% endif %}
                     </div>
 
                     <div class="rank-scores-box">
@@ -91,13 +97,13 @@
         </div>
     </div>
     {% if form.errors %}
-        {% for field, errors in form.errors.items() %}
-            {% for error in errors %}
-            <script>
-                alert('{{ error }}');
-            </script>
-            {% endfor %}
-        {% endfor %}
+    {% for field, errors in form.errors.items() %}
+    {% for error in errors %}
+    <script>
+        alert('{{ error }}');
+    </script>
+    {% endfor %}
+    {% endfor %}
     {% endif %}
 </div>
 

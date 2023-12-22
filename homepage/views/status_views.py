@@ -41,18 +41,12 @@ def api_endpoint():
     
     requestkey, quiznumber = data['key'], data['quiznumber']    
     result = re.findall(r'\d+', requestkey)
-    order_result = re.findall(r'주문', requestkey)
     answer = None
     solved_count = 0
 
     print("status : requestkey = {}, quiznumber = {}".format(requestkey, quiznumber))
 
-    if order_result == ['주문']:
-        if order_result[0] == '주문':
-            result = chatbot_client(requestkey)
-            resulttype = "order"
-
-    elif (result != [] and requestkey[-1:] == "번") or (result != [] and requestkey[-2:] == "문제") or (result != [] and requestkey[-1:] == "qjs"):
+    if (result != [] and requestkey[-1:] == "번") or (result != [] and requestkey[-2:] == "문제") or (result != [] and requestkey[-1:] == "qjs"):
         result = int(result[0])
         if result > 120:
             result = "문제가 없습니다. [ 범위 1 ~ 120번 ]"
