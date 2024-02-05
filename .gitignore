@@ -1,5 +1,4 @@
 **/__pycache__/
-migrations/
-plan/
-*.bat
+/utils/
+/migrations/
 *.md

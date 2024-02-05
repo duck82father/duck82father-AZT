@@ -52,7 +52,7 @@
                                     value="{{ form.comment.data or '' }}" placeholder="메시지를 남겨주세요(최대 30자)">
                             </div>
                             <div class="col-auto" style="width:28%;">
-                                <button type="submit" class="btn btn-primary mb-3">제출하기</button>
+                                <button type="submit" id="messageBtn" class="btn btn-primary mb-3">제출하기</button>
                             </div>
                         </form>
                     </div>
@@ -108,7 +108,15 @@
 </div>
 
 
-
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        
+        messageBtn = document.getElementById('messageBtn');
+        messageBtn.addEventListener('click', function () {
+                alert('메시지를 변경합니다.');
+        });
+    })
+</script>
 
 
 {% endblock %}
