@@ -2,3 +2,4 @@
 /utils/
 /migrations/
 *.md
+*.db-journal
