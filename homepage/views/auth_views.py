@@ -29,7 +29,6 @@ def signup():
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     form = UserLoginForm()
-    print(form)
     if request.method == 'POST' and form.validate_on_submit():
         error = None
         user = Users.query.filter_by(username=form.username.data).first()
