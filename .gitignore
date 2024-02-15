@@ -3,3 +3,4 @@
 /migrations/
 *.md
 *.db-journal
+logs

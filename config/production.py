@@ -19,7 +19,7 @@ dictConfig({
             'filename' : os.path.join(BASE_DIR, 'logs/myproject.log'),
             'maxBytes' : 1024 * 1024 * 5, # 5 MB
             'backupCount' : 5,
-            'formmater' : 'default',
+            'formatter' : 'default',
         },
     },
     'root' : {
