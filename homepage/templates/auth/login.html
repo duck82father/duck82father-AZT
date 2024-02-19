@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container">
+<div class="container scroll-hide">
     <div class="py-4"></div>
-    <div class="py-5"></div>
     <div class="py-5 text-center">
         <h1 class="introduce-font lh-base">
             이제 <b>당신의 아재력</b>을 증명할 시간입니다.<br>
             <b class="font-color-navi">120문항의 아재개그</b>에 도전하세요!
         </h1>
     </div>
-    <div class="col-4 mx-auto mt-2 login-box">
+    <div class="col-4 mx-auto mt-2 mb-5 login-box">
         <div class="text-center py-4">
             <h4 class="mb-3 nav-font">로그인</h4>
         </div>
@@ -27,9 +26,11 @@
                     value="{{ form.password.data or '' }}">          
             </div>
             <div class="text-center py-4">
-                <button type="submit" class="btn btn-primary">로그인</button>
+                <button type="button" class="btn btn btn-secondary" onclick="location.href='{{ url_for('auth.signup') }}'">계정생성</button></a>
+                <button type="submit" class="btn btn-primary ms-4">로그인</button>
             </div>
         </form>
     </div>
+    <div class="py-4 ">&nbsp;</div>
 </div>
 {% endblock content %}

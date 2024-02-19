@@ -1,13 +1,13 @@
 <!-- 필드오류 -->
 {% if form.errors %}
-<div class="alert alert-danger" role="alert" style="font-size: 0.75rem;">
+<div class="alert alert-danger mx-3 px-3" role="alert">
     {% for field, errors in form.errors.items() %}
     <div class="container">
         <div class="row">
-            <div class="col-5 ps-2 my-1 fw-bold">
+            <div class="col-3 ps-2 my-1 fw-bold">
                 <strong>{{ form[field].label }}</strong>
             </div>
-            <div class="col-7 p-0">
+            <div class="col-9 p-0">
                 <ul class="m-1" style="list-style:disc">
                     {% for error in errors %}
                     <li>{{ error }}</li>
@@ -16,7 +16,6 @@
             </div>
         </div>
     </div>
-    
     {% endfor %}
 </div>
 {% endif %}

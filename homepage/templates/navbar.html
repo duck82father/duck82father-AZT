@@ -1,6 +1,6 @@
 <!-- 네비게이션바 -->
 <nav class="navbar navbar-expand-lg navbar-light nav-gradient-background" style="
-    position: absolute; width: 100%; z-index: 9999;" id="navbar">
+    width: 100%; z-index: 9999;" id="navbar">
     <div class="container-fluid">
 
         <a class="navbar-brand text-light fw-bold p-3 fs-3 nav-font nav-line-height"
@@ -19,7 +19,7 @@
             </div>
             <div class="scores-circles">
                 <ul class="circles">
-                    {% for i in range(1, 61) %}
+                    {% for i in range(1, 41) %}
                     {% if i in solved_quiz_ids %}
                     <li class="circle-solved" id="score{{ i }}"></li>
                     {% else %}
@@ -28,7 +28,16 @@
                     {% endfor %}
                 </ul>
                 <ul class="circles">
-                    {% for i in range(61, 121) %}
+                    {% for i in range(41, 81) %}
+                    {% if i in solved_quiz_ids %}
+                    <li class="circle-solved" id="score{{ i }}"></li>
+                    {% else %}
+                    <li class="circle" id="score{{ i }}"></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <ul class="circles">
+                    {% for i in range(81, 121) %}
                     {% if i in solved_quiz_ids %}
                     <li class="circle-solved" id="score{{ i }}"></li>
                     {% else %}
@@ -52,6 +61,9 @@
                     <a class="nav-link text-nav" href="{{ url_for('status.show') }}"><b class="fw-bold">아재퀴즈</b></a>
                 </li>
                 {% endif %}
+                <li class="nav-item me-3 nav-rank">
+                    <a class="nav-link text-nav" href="{{ url_for('question._list') }}"><b class="fw-bold">자유게시판</b></a>
+                </li>
                 <li class="nav-item me-3 nav-rank">
                     <a class="nav-link text-nav" href="{{ url_for('rank.rank') }}"><b class="fw-bold">순위표</b></a>
                 </li>

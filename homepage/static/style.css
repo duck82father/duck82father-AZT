@@ -27,6 +27,11 @@ body {
     color: #a9afbb, i !important;;
 } */
 
+.overflowInitial{
+    overflow: initial;
+}
+
+
 .nav-rank {
     border-right: 0.5px solid #7291ec;
     padding-right: 15px;
@@ -287,19 +292,28 @@ body {
     }
 }
 
+.qna-container{
+    max-width: 1080px;
+}
+
+
 .nav-background-behind {
     position: fixed;
     width: 100%;
     height: 85px;
 }
 
-.card {
+.azcard {
     border: none;
     box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.075);
 }
 
 .card-footer:last-child {
     border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.card-text p {
+    line-height: 1.6em;
 }
 
 .selected_quiz {
@@ -339,7 +353,18 @@ body {
     overflow: hidden;
     height: 100vh;
     /* 화면 높이로 설정 */
-    padding-top: 85px;
+    /* padding-top: 85px; */
+}
+
+
+.scroll-hide {
+    /* height:120vh; */
+    -ms-overflow-style: none;
+    overflow-y: auto;
+}
+
+.scroll-hide::-webkit-scrollbar {
+    display: none;
 }
 
 .quiz_wrap {
@@ -384,7 +409,7 @@ body {
     padding: 36px;
     overflow-y: scroll;
     /* overflow: hidden; */
-    height: 66vh;
+    height: 63vh;
 
     @media screen and (max-width: 1000px) {
         min-height: 65dvh;
@@ -559,4 +584,22 @@ input:focus {
 
 .text-nav {
     color: #c4cef0 !important;
+}
+
+
+/* 게시판 */
+.table-height tr{
+    height:3em;
+    border-bottom: 1px solid #ccc;
+}
+
+.table-height th{
+    vertical-align:middle;
+    background-color:#eff4ff;
+    font-weight:700;
+    color:#111a97;
+}
+
+.table-height td{
+    vertical-align:middle;
 }

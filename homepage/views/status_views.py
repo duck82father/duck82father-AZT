@@ -24,15 +24,19 @@ def countSolved ():
     else:
         solved_count = 0
         return
+    
+def solvedCount():
+    solved = Solved.query.filter_by(user_id=g.user.id).all()
+    solved_quiz_ids = []
+    for solve in solved:
+        solved_quiz_ids.append(solve.quiz_id)
+    return solved_quiz_ids
 
 @bp.route('/show/', methods=('GET', 'POST'))
 @login_required
 def show():
-    solved = Solved.query.filter_by(user_id=g.user.id).all()
+    solved_quiz_ids = solvedCount()
     quizs = azquiz.query
-    solved_quiz_ids = []
-    for solve in solved:
-        solved_quiz_ids.append(solve.quiz_id)
     return render_template('status.html', quizs=quizs, solved_quiz_ids=solved_quiz_ids)
 
 @bp.route('/show/api/endpoint', methods=['POST'])

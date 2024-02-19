@@ -25,4 +25,4 @@ def rank():
         user.comment = form.comment.data
         db.session.commit()
         return redirect(url_for('rank.rank'))
-    return render_template('rank/rank.html', solved_quiz_ids=solved_quiz_ids, all_user_data=all_user_data, form = form)
+    return render_template('rank/rank.html', solved_quiz_ids=solved_quiz_ids, all_user_data=all_user_data, form=form)

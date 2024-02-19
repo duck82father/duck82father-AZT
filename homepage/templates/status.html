@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
-<div class="nav-background-behind"></div>
+<link rel="stylesheet" href="{{ url_for('static', filename='reset.min.css') }}" />
 <div class="container-fruid whole_wrap">
     <div class="row">
         <div class="col-sm-7 quiz_wrap">
             <div class="d-flex flex-wrap justify-content-center align-items-start mx-3 my-4 p-3">
                 {% for quiz in quizs %}
                 <div class="my-1 quizBoxSelect" id="{{ loop.index }}">
-                    <div class="col-10 card m-3" style="width: 13.5rem; height: 11rem; border-radius: 0.6rem;"
+                    <div class="col-10 card azcard m-3" style="width: 13.5rem; height: 11rem; border-radius: 0.6rem;"
                         id="quizbox{{ loop.index }}">
                         {% if quiz.id in solved_quiz_ids %}
                         <div class="card-body text-quiz quizsuccess-top">
@@ -56,8 +55,9 @@
                 <div class="text-center">
                     <p class="footer-text">문제를&nbsp;풀고&nbsp;싶다면
                         <b class="fw-bold text-quiz">번호 [1 ~ 120번]</b>를<b class="mobile-show"><br></b><b class="mobile-avoid">&nbsp;&nbsp;/&nbsp;&nbsp;</b>어려울 땐
-                        <b class="fw-bold text-quiz">힌트</b> 요청을&nbsp;해보세요👍
-                    </p>
+                        <b class="fw-bold text-quiz">[힌트]</b>라고 입력해&nbsp;주세요👍
+                    </p><br>
+                    <p class="text-black-50">Copyrightⓒ 2024 duck82father All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -219,7 +219,7 @@
 
         function clearCheckBox() {
             if (elementBoxGlobal) {
-                elementBoxGlobal.setAttribute('class', 'col-10 card m-3')
+                elementBoxGlobal.setAttribute('class', 'col-10 card azcard m-3')
                 elementTextGlobal.setAttribute('style', 'word-break:keep-all;')
             }
         }
@@ -230,7 +230,7 @@
             elementText = document.getElementById('quiz' + result);
             if (elementBox) {
                 elementBox.scrollIntoView({ behavior: 'smooth', block: "center", inline: "center" })
-                elementBox.setAttribute('class', 'col-10 card m-3 selected_quiz')
+                elementBox.setAttribute('class', 'col-10 card azcard m-3 selected_quiz')
                 elementText.setAttribute('style', 'word-break:keep-all; color:#916e07;')
             }
             elementBoxGlobal = elementBox

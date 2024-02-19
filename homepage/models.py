@@ -1,10 +1,43 @@
 from homepage import db
 
+question_voter = db.Table(
+    'question_voter',
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), primary_key=True),
+    db.Column('question_id', db.Integer, db.ForeignKey('question.id', ondelete='CASCADE'), primary_key=True)
+)
+
+answer_voter = db.Table(
+    'answer_voter',
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), primary_key=True),
+    db.Column('answer_id', db.Integer, db.ForeignKey('answer.id', ondelete='CASCADE'), primary_key=True)
+)
+
 class azquiz(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     quiz = db.Column(db.String(150), nullable=False)
     answer = db.Column(db.String(50), nullable=False)
     hint = db.Column(db.String(50), nullable=False)
+
+class Question(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    subject = db.Column(db.String(200), nullable=False)
+    content = db.Column(db.Text(), nullable=False)
+    create_date = db.Column(db.DateTime(), nullable=False)
+    modify_date = db.Column(db.DateTime(), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+    user = db.relationship('Users', backref=db.backref('question_set'))
+    voter = db.relationship('Users', secondary=question_voter, backref=db.backref('question_voter_set'))
+
+class Answer(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.Text(), nullable=False)
+    create_date = db.Column(db.DateTime(), nullable=False)
+    modify_date = db.Column(db.DateTime(), nullable=True)
+    question_id = db.Column(db.Integer, db.ForeignKey('question.id', ondelete='CASCADE'))
+    question = db.relationship('Question', backref=db.backref('answer_set'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+    user = db.relationship('Users', backref=db.backref('answer_set'))
+    voter = db.relationship('Users', secondary=answer_voter, backref=db.backref('answer_voter_set'))
 
 class Users(db.Model):
     __tablename__ = 'users'

@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
-    <!-- pybo CSS -->
+    <!-- Reset CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='reset.min.css') }}" />
+    <!-- homepage CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <!-- Bootstrap JS -->
     <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>  
     <title>깨워라, 당신의 아재력!</title>
     
 </head>
-<body>
+<body id="body">
 
 <!-- 네비게이션바 -->
 {% include "navbar.html" %}

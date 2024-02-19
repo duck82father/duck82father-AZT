@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from flaskext.markdown import Markdown
 
 from sqlalchemy import MetaData
 
@@ -30,11 +31,13 @@ def create_app():
     from . import models
 
     # 블루프린트
-    from .views import main_views, auth_views, status_views, rank_views
+    from .views import main_views, auth_views, status_views, rank_views, question_views, answer_views
     app.register_blueprint(main_views.bp)
     app.register_blueprint(auth_views.bp)
     app.register_blueprint(status_views.bp)
     app.register_blueprint(rank_views.bp)
+    app.register_blueprint(question_views.bp)
+    app.register_blueprint(answer_views.bp)
 
     # 필터
     from .filter import format_datetime
@@ -42,6 +45,9 @@ def create_app():
 
     # 오류페이지
     app.register_error_handler(404, page_not_found)
+
+    # markdown
+    Markdown(app, extensions=['nl2br', 'fenced_code'])
 
     return app
 
