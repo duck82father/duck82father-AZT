@@ -13,6 +13,37 @@
 }
 
 
+.form-error-mobile {
+    padding: 0!important;
+    flex: 0 0 auto;
+    width: 58.33333333%;
+    @media screen and (max-width: 1000px) {
+        padding-left : 20px!important;
+        width:100%;
+    }
+}
+
+.mobile-displayn-none {
+    @media screen and (max-width: 1000px) {
+        display: none;
+    }
+}
+
+.mobile-padding-bottom-none {
+    @media screen and (max-width: 1000px) {
+        padding-bottom:0rem!important;
+    }
+}
+
+.mobile-login {
+    @media screen and (max-width: 1000px) {
+        width: 17.5rem;
+        margin: auto;
+        padding-bottom: 1em!important;
+    }
+}
+
+
 html,
 body {
     scroll-behavior: smooth;
@@ -21,12 +52,20 @@ body {
 
 body {
     overflow: hidden;
+    @media screen and (max-width: 1000px) {
+        overflow:auto;
+    }
+}
+
+.mobile-m-2 {
+    @media screen and (max-width: 1000px) {
+        margin-top: 0rem!important;
+    }
 }
 
 .overflowInitial{
     overflow: initial;
 }
-
 
 .navbar-sticky{
     position: sticky;
@@ -40,9 +79,9 @@ body {
     border-right: 0.5px solid #7291ec;
     padding-right: 15px;
 
-    @media screen and (max-width: 1000px) {
+    /* @media screen and (max-width: 1000px) {
         display: none;
-    }
+    } */
 }
 
 
@@ -238,6 +277,12 @@ body {
     border-color: #e1e9ee;
     width: 30rem;
     box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.05);
+
+    @media screen and (max-width: 1000px) {
+        padding: 0.5rem 2rem;
+        width: 94%;
+    }
+
 }
 
 .signup-box {
@@ -250,6 +295,12 @@ body {
     border-color: #e0e0e0;
     width: 30rem;
     box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.05);
+
+    @media screen and (max-width: 1000px) {
+        padding: 0.5rem 2rem;
+        width: 94%;
+    }
+
 }
 
 .nav-line-height {
@@ -272,6 +323,24 @@ body {
         display:contents;
     }
 }
+
+
+.navbar-toggler {
+    @media screen and (max-width: 1000px) {
+        color:white;
+        background-color:white;
+        border:0px;
+        --bs-navbar-toggler-focus-width:0rem;
+    }
+}
+    
+.navbar-collapse {
+    @media screen and (max-width: 1000px) {
+    margin-left:1rem;
+    margin-bottom:0.5rem;
+    }
+}
+
 
 .nav-gradient-background-gray {
     background: linear-gradient(-30deg, #545c63, #525270, #434d5c, #6e7794);

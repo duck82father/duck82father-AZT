@@ -4,10 +4,10 @@
     {% for field, errors in form.errors.items() %}
     <div class="container">
         <div class="row">
-            <div class="col-5 ps-2 my-1 fw-bold">
+            <div class="col-5 ps-2 my-1 fw-bold mobile-displayn-none">
                 <strong>{{ form[field].label }}</strong>
             </div>
-            <div class="col-7 p-0">
+            <div class="form-error-mobile">
                 <ul class="m-1" style="list-style:disc">
                     {% for error in errors %}
                     <li>{{ error }}</li>
