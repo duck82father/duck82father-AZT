@@ -2,8 +2,9 @@
 {% block content %}
 
 <link rel="stylesheet" href="{{ url_for('static', filename='reset.min.css') }}" />
-<div class="container-fruid whole_wrap">
+<div class="container-fruid whole_wrap" id="whole_wrap_div">
     <div class="row">
+
         <div class="col-sm-7 quiz_wrap">
             <div class="d-flex flex-wrap justify-content-center align-items-start mx-3 my-4 p-3">
                 {% for quiz in quizs %}
@@ -32,8 +33,7 @@
                         </div>
                         <div class="container card-footer" id="unSolvedDiv{{ quiz.id }}">
                             <div class="row">
-                                <span class="col-5 p-2 fs-6" id="unSolvedSpanQuizId{{ quiz.id }}">No. {{
-                                    quiz.id}}</span>
+                                <span class="col-5 p-2 fs-6" id="unSolvedSpanQuizId{{ quiz.id }}">No. {{quiz.id}}</span>
                                 <span class="col-7 text-end p-2 text-black-50" id="unSolvedSpan{{ quiz.id }}">
                                     도전 가능
                                 </span>
@@ -46,8 +46,8 @@
             </div>
         </div>
 
-        <div class="col-lg-5">
-            <div class="chat_wrap">
+        <div class="col-lg-5 chat_wrap">
+            <div class="chat">
                 <div class="inner">
                     <!-- 대화 아이템이 동적으로 추가될 공간 -->
                 </div>
@@ -225,7 +225,6 @@
         }
 
         function toScrollMoving(result) {
-            quiznumber = result;
             elementBox = document.getElementById('quizbox' + result);
             elementText = document.getElementById('quiz' + result);
             if (elementBox) {

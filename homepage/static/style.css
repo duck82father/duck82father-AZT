@@ -22,15 +22,19 @@ body {
 body {
     overflow: hidden;
 }
-/* 
-#comment .input::placeholder{
-    color: #a9afbb, i !important;;
-} */
 
 .overflowInitial{
     overflow: initial;
 }
 
+
+.navbar-sticky{
+    position: sticky;
+    top:0;
+    width: 100%;
+    z-index: 200;
+    height:9vh;
+}
 
 .nav-rank {
     border-right: 0.5px solid #7291ec;
@@ -354,14 +358,10 @@ body {
 
 .whole_wrap {
     overflow: hidden;
-    height: 100vh;
-    /* 화면 높이로 설정 */
-    /* padding-top: 85px; */
 }
 
 
 .scroll-hide {
-    /* height:120vh; */
     -ms-overflow-style: none;
     overflow-y: auto;
 }
@@ -371,12 +371,13 @@ body {
 }
 
 .quiz_wrap {
-    height: 93vh;
+    height: 91vh;
     /* 화면 높이로 설정 */
-    overflow-y: auto;
+    overflow-y: scroll;
     /* 세로 스크롤 유지 */
-    -ms-overflow-style: none;
+    /*-ms-overflow-style: none;*/
     background-color: #d2ecfd;
+    position: sticky; bottom:0;
 
     @media screen and (max-width: 1000px) {
         display: none;
@@ -384,10 +385,30 @@ body {
 }
 
 .quiz_wrap::-webkit-scrollbar {
-    display: none;
+    width: 5px;
+    height: 5px;
 }
 
+.quiz_wrap::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.quiz_wrap::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #93cdfa;
+}
+
+.quiz_wrap::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+
 .chat_wrap {
+    height:91vh;
+}
+
+.chat {
     width: 84%;
     font-size: 13px;
     color: #333;
@@ -405,7 +426,7 @@ body {
     }
 }
 
-.chat_wrap .inner {
+.chat .inner {
     background-color: #c1e4fc;
     border: #b5dbf3 2px solid;
     border-radius: 0.6rem;
@@ -425,32 +446,32 @@ body {
     }
 }
 
-.chat_wrap .inner::-webkit-scrollbar {
+.chat .inner::-webkit-scrollbar {
     width: 5px;
     height: 5px;
 }
 
-.chat_wrap .inner::-webkit-scrollbar-track {
+.chat .inner::-webkit-scrollbar-track {
     background-color: transparent;
 }
 
-.chat_wrap .inner::-webkit-scrollbar-thumb {
+.chat .inner::-webkit-scrollbar-thumb {
     border-radius: 3px;
     background-color: #93cdfa;
 }
 
-.chat_wrap .inner::-webkit-scrollbar-button {
+.chat .inner::-webkit-scrollbar-button {
     width: 0;
     height: 0;
 }
 
-.chat_wrap .p-4 {
+.chat .p-4 {
     @media screen and (max-width: 1000px) {
         padding: 1.2rem !important
     }
 }
 
-.chat_wrap .item {
+.chat .item {
     margin-top: 15px;
 
     @media screen and (max-width: 1000px) {
@@ -458,11 +479,11 @@ body {
     }
 }
 
-.chat_wrap .item:first-child {
+.chat .item:first-child {
     margin-top: 0px;
 }
 
-.chat_wrap .item .box {
+.chat .item .box {
     display: inline-block;
     max-width: 400px;
     position: relative;
@@ -472,7 +493,7 @@ body {
     }
 }
 
-.chat_wrap .item .box::before {
+.chat .item .box::before {
     content: "";
     position: absolute;
     left: -8px;
@@ -482,7 +503,7 @@ body {
     border-right: 8px solid #fff;
 }
 
-.chat_wrap .item .box .msg {
+.chat .item .box .msg {
     background: #fff;
     border-radius: 10px;
     padding: 15px;
@@ -491,13 +512,13 @@ body {
     line-height: 1.5em;
 }
 
-.chat_wrap .item .box .h6 {
+.chat .item .box .h6 {
     @media screen and (max-width: 1000px) {
         font-size: 1em;
     }
 }
 
-.chat_wrap .item .box .time {
+.chat .item .box .time {
     font-size: 11px;
     color: #6c6c6d;
     position: absolute;
@@ -506,38 +527,38 @@ body {
     width: 70px;
 }
 
-.chat_wrap .item.mymsg {
+.chat .item.mymsg {
     text-align: right;
 }
 
-.chat_wrap .item.mymsg .box::before {
+.chat .item.mymsg .box::before {
     left: auto;
     right: -8px;
     border-left: 8px solid #ffef61;
     border-right: 0;
 }
 
-.chat_wrap .item.mymsg .box .msg {
+.chat .item.mymsg .box .msg {
     background: #ffef61;
 }
 
-.chat_wrap .item.mymsg .box .time {
+.chat .item.mymsg .box .time {
     right: auto;
     left: -75px;
 }
 
-.chat_wrap .item .box {
+.chat .item .box {
     transition: all .3s ease-out;
     margin: 0 0 0 20px;
     opacity: 0;
 }
 
-.chat_wrap .item.mymsg .box {
+.chat .item.mymsg .box {
     transition: all .3s ease-out;
     margin: 0 20px 0 0;
 }
 
-.chat_wrap .item.on .box {
+.chat .item.on .box {
     margin: 0;
     opacity: 1;
 }
