@@ -23,9 +23,42 @@
     }
 }
 
-.mobile-displayn-none {
+.mobile-width-half-to-sixty {
+    width:50%;
+    @media screen and (max-width: 1000px) {
+        width:60%;
+    }
+}
+
+.fs-5 {
+    @media screen and (max-width: 1000px) {
+        font-size:1rem!important;
+    }
+}
+
+.mobile-width-hundred {
+    @media screen and (max-width: 1000px) {
+        width:100%;
+    }
+}
+
+
+.mobile-padding-zero {
+    @media screen and (max-width: 1000px) {
+        padding:0rem!important;
+    }
+}
+
+.mobile-display-none {
     @media screen and (max-width: 1000px) {
         display: none;
+    }
+}
+
+.mobile-display-only {
+    display: none;
+    @media screen and (max-width: 1000px) {
+        display:initial;
     }
 }
 
@@ -72,16 +105,16 @@ body {
     top:0;
     width: 100%;
     z-index: 200;
-    height:9vh;
+    height:9dvh;
 }
 
 .nav-rank {
     border-right: 0.5px solid #7291ec;
     padding-right: 15px;
 
-    /* @media screen and (max-width: 1000px) {
-        display: none;
-    } */
+    @media screen and (max-width: 1000px) {
+        border-right: 0;
+    }
 }
 
 
@@ -336,7 +369,7 @@ body {
     
 .navbar-collapse {
     @media screen and (max-width: 1000px) {
-    margin-left:1rem;
+    margin-left:0.75rem;
     margin-bottom:0.5rem;
     }
 }
@@ -427,6 +460,9 @@ body {
 
 .whole_wrap {
     overflow: hidden;
+    @media screen and (max-width: 1000px) {
+        padding-top:0rem!important;
+    }
 }
 
 
@@ -439,17 +475,28 @@ body {
     display: none;
 }
 
+.mobile-quiz {
+    @media screen and (max-width: 1000px) {
+        margin: 0rem !important;
+        padding: 0rem !important;
+        justify-content:start!important;
+        flex-wrap:initial!important;
+    }
+}
+
 .quiz_wrap {
     height: 91vh;
-    /* 화면 높이로 설정 */
+    width:100%;
     overflow-y: scroll;
-    /* 세로 스크롤 유지 */
-    /*-ms-overflow-style: none;*/
     background-color: #d2ecfd;
     position: sticky; bottom:0;
 
     @media screen and (max-width: 1000px) {
-        display: none;
+        height: 34dvh;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        display:flex;
+        align-items: center;
     }
 }
 
@@ -472,9 +519,11 @@ body {
     height: 0;
 }
 
-
 .chat_wrap {
     height:91vh;
+    @media screen and (max-width: 1000px) {
+        height: 57dvh;
+    }
 }
 
 .chat {
@@ -487,8 +536,8 @@ body {
     /* 화면 높이로 설정 */
 
     @media screen and (max-width: 1000px) {
-        height: 100%;
-        width: 92%;
+        height: 57dvh;
+        width: 90%;
         margin-left: auto;
         margin-right: auto;
         margin-top: 0;
@@ -505,7 +554,7 @@ body {
     height: 63vh;
 
     @media screen and (max-width: 1000px) {
-        min-height: 65dvh;
+        height: 33dvh;
         padding: 20px;
         padding-top: 20px;
         border-top-left-radius: 0;
@@ -684,6 +733,9 @@ input:focus {
 .table-height tr{
     height:3em;
     border-bottom: 1px solid #ccc;
+    @media screen and (max-width: 1000px) {
+        height:2.5em;
+    }
 }
 
 .table-height th{

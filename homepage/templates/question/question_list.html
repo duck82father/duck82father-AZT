@@ -28,9 +28,9 @@
         <thead>
         <tr class="text-center table-dark">
             <th>번호</th>
-            <th style="width:50%">제목</th>
+            <th class="mobile-width-half-to-sixty">제목</th>
             <th>글쓴이</th>
-            <th>작성일시</th>
+            <th class="mobile-display-none">작성일시</th>
         </tr>
         </thead>
 
@@ -39,7 +39,7 @@
         <!-- 공지사항 시작 : 게시물 id == '0' -->
         {% if question_notice %}
                 <tr class="text-center">
-                    <td class="fw-bold">[ 공지 ]</td>
+                    <td class="fw-bold">[공지]</td>
                     <td class="text-start fw-bold">
                         <a href="{{ url_for('question.detail', question_id=question_notice.id) }}">{{ question_notice.subject }}</a>
                         {% if question_notice.answer_set|length > 0 %}
@@ -47,7 +47,7 @@
                         {% endif %}
                     </td>
                     <td>{{ question_notice.user.username }}</td>
-                    <td>{{ question_notice.create_date|datetime }}</td>
+                    <td class="mobile-display-none">{{ question_notice.create_date|datetime }}</td>
                 </tr>
         {% endif %}
         <!-- 공지사항 끝 -->
@@ -66,7 +66,7 @@
                             {% endif %}
                         </td>
                         <td>{{ question.user.username }}</td>
-                        <td>{{ question.create_date|datetime }}</td>
+                        <td class="mobile-display-none">{{ question.create_date|datetime }}</td>
                     </tr>
                 {% endif %}
             {% endfor %}
@@ -81,7 +81,7 @@
     </table>
 
     <!-- 페이징처리 시작 -->
-    <ul class="pagination justify-content-center">
+    <ul class="pagination justify-content-center mb-4">
         <!-- 이전페이지 -->
         {% if question_list.has_prev %}
         <li class="page-item">

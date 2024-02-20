@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light nav-gradient-background navbar-sticky" id="navbar">
     <div class="container-fluid nav-gradient-background" id="navbar-container">
 
-        <a class="navbar-brand text-light fw-bold p-3 fs-3 nav-font nav-line-height"
+        <a class="navbar-brand text-light fw-bold px-3 fs-3 nav-font nav-line-height"
             href="{{ url_for('main.index') }}">아재개그&nbsp;120</a>
 
         <!-- 화면너비가 작으면 navbar-collapse은 숨겨지고, navbar-toggle은 표시됨 -->
@@ -55,23 +55,26 @@
         <div class="collapse navbar-collapse justify-content-end px-2 fs-5" id="navbarSupportedContent"
             style="flex-grow:0;">
             <ul class="navbar-nav me-3">
+                <li class="nav-item me-3 nav-rank mobile-display-only">
+                    <p class="nav-link text-nav fw-bold"><span class="fw-normal mobile-display-only">/&nbsp;&nbsp;</span>SCORES&nbsp;:&nbsp;<b id="solvedCountNumber" class="scores-number">{{ solved_quiz_ids|length }}</b>&nbsp;of&nbsp;120</p>
+                </li>
                 {% if all_user_data %}
-                <li class="nav-item me-3 nav-rank">
-                    <a class="nav-link text-nav" href="{{ url_for('status.show') }}"><b class="fw-bold">아재퀴즈</b></a>
+                <li class="nav-item me-3 nav-rank mobile-display-none">
+                    <a class="nav-link text-nav" href="{{ url_for('status.show') }}"><span class="fw-normal mobile-display-only">/&nbsp;&nbsp;</span><b class="fw-bold">아재퀴즈</b></a>
                 </li>
                 {% endif %}
                 <li class="nav-item me-3 nav-rank">
-                    <a class="nav-link text-nav" href="{{ url_for('question._list') }}"><b class="fw-bold">자유게시판</b></a>
+                    <a class="nav-link text-nav" href="{{ url_for('question._list') }}"><span class="fw-normal mobile-display-only">/&nbsp;&nbsp;</span><b class="fw-bold">자유게시판</b></a>
                 </li>
                 <li class="nav-item me-3 nav-rank">
-                    <a class="nav-link text-nav" href="{{ url_for('rank.rank') }}"><b class="fw-bold">순위표</b></a>
+                    <a class="nav-link text-nav" href="{{ url_for('rank.rank') }}"><span class="fw-normal mobile-display-only">/&nbsp;&nbsp;</span><b class="fw-bold">순위표</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-nav" href="{{ url_for('auth.logout') }}"><b class="fw-bold">{{
+                    <a class="nav-link text-nav" href="{{ url_for('auth.logout') }}"><span class="fw-normal mobile-display-only">/&nbsp;&nbsp;</span><b class="fw-bold">{{
                             g.user.username }}</b>님 (로그아웃)</a>
                 </li>
             </ul>
-            {% else %}
+        {% else %}
             <div class="collapse navbar-collapse justify-content-end px-2 fs-5" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item me-3">

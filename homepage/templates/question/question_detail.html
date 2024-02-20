@@ -12,13 +12,13 @@
 
     <!-- 질문 -->
     <h3 class="h3 fw-bold m-3 border-bottom pt-4 pb-2 nav-font">{{ question.subject }}</h3>
-    <div class="card mx-3 mt-4 py-4 px-3">
+    <div class="card mx-3 mt-4 py-4 px-3 mobile-padding-zero">
         <div class="card-body">
             <div class="card-text mb-5">{{ question.content|markdown }}</div>
 
             <!-- 추천, 작성자, 저장 시간 시작 -->
 			<div class="row">
-                <div class="col-6 mt-3">
+                <div class="col-6 mt-3 mobile-width-hundred">
                     <a href="javascript:void(0)" data-uri="{{ url_for('question.vote', question_id=question.id) }}"
                     class="recommend btn btn-sm btn-outline-secondary">추천
                         <span class="badge rounded-pill bg-success">{{ question.voter|length }}</span>
@@ -33,12 +33,12 @@
 
                 <div class="col-6 d-flex justify-content-end">
                     {% if question.modify_date %}
-                    <div class="badge bg-light text-dark p-2 text-start mx-3">
+                    <div class="badge bg-light text-dark p-2 text-start mx-3 mobile-display-none">
                         <div class="mb-2">modified at</div>
                         <div>{{ question.modify_date|datetime }}</div>
                     </div>
                     {% endif %}
-                    <div class="badge bg-light text-dark p-2 text-start">
+                    <div class="badge bg-light text-dark p-2 text-start mobile-display-none">
                         <div class="mb-2">{{ question.user.username }}</div>
                         <div>{{ question.create_date|datetime }}</div>
                     </div>
@@ -53,7 +53,7 @@
     <h5 class="border-bottom m-3 mt-4 py-2 fw-bold">{{ question.answer_set|length }}개의 답변이 있습니다.</h5>
     {% for answer in question.answer_set %}
     <a id="answer_{{ answer.id }}"></a>
-    <div class="card mx-3 mt-3 px-3 bg-light">
+    <div class="card mx-3 mt-3 px-3 bg-light mobile-padding-zero">
         <div class="card-body">
             <div class="card-text my-2">{{ answer.content|markdown }}</div>
 
@@ -74,12 +74,12 @@
 
                 <div class="col-6 d-flex justify-content-end">
                     {% if answer.modify_date %}
-                    <div class="badge bg-light text-dark p-2 text-start mx-3">
+                    <div class="badge bg-light text-dark p-2 text-start mx-3 mobile-display-none">
                         <div class="mb-2">modified at</div>
                         <div>{{ answer.modify_date|datetime }}</div>
                     </div>
                     {% endif %}
-                    <div class="badge bg-light text-dark p-2 text-start">
+                    <div class="badge bg-light text-dark p-2 text-start mobile-display-none">
                         <div class="mb-2">{{ answer.user.username }}</div>
                         <div>{{ answer.create_date|datetime }}</div>
                     </div>
