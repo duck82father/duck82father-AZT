@@ -103,9 +103,12 @@ body {
 .navbar-sticky{
     position: sticky;
     top:0;
-    width: 100%;
-    z-index: 200;
+    width:100%;
+    z-index:200;
     height:9dvh;
+    @media screen and (max-width: 1000px) {
+        height:12dvh;
+    }
 }
 
 .nav-rank {
@@ -486,13 +489,12 @@ body {
 
 .quiz_wrap {
     height: 91vh;
-    width:100%;
     overflow-y: scroll;
     background-color: #d2ecfd;
     position: sticky; bottom:0;
 
     @media screen and (max-width: 1000px) {
-        height: 34dvh;
+        height: 60dvh;
         overflow-x: scroll;
         overflow-y: hidden;
         display:flex;
