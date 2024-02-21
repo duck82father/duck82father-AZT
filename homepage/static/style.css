@@ -101,6 +101,20 @@ body {
     overflow: initial;
 }
 
+.navbar {
+    @media screen and (max-width: 1000px) {
+        --bs-navbar-padding-y:1.1rem;
+    }
+}
+
+
+.navbar-nav {
+    @media screen and (max-width: 1000px) {
+        margin-top:10px;
+        margin-bottom:7px;
+    }
+}
+
 .navbar-sticky{
     position: sticky;
     top:0;
@@ -108,7 +122,7 @@ body {
     z-index:200;
     height:9dvh;
     @media screen and (max-width: 1000px) {
-        height:12dvh;
+        height:5rem;
     }
 }
 
@@ -118,9 +132,9 @@ body {
 
     @media screen and (max-width: 1000px) {
         border-right: 0;
+        padding-bottom:6px;
     }
 }
-
 
 .rank-text {
     padding: 20px;
@@ -136,6 +150,11 @@ body {
     font-family: 'EliceDigitalBaeum_Bold';
     color: #ffffff;
     font-size: 2.5em;
+    @media screen and (max-width: 1000px) {
+        font-size: 1.75em;
+        padding-top: 0px;
+        padding-bottom: 20px;
+    }
 }
 
 .rank-number-user {
@@ -169,6 +188,14 @@ body {
     background-color: #e1f0ff;
     border-color: #e1e9ee;
     box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.05);
+    @media screen and (max-width: 1000px) {
+        padding: 1rem 1rem;
+        margin-top: 0rem;
+    }
+}
+
+.ranking_comment_wrap .ms-2 {
+    margin-left:0px!important;
 }
 
 .rank-group {
@@ -184,16 +211,26 @@ body {
     height: 12px;
     border-radius: 50%;
     margin: 5px;
+    @media screen and (max-width: 1000px) {
+        width: 10px;
+        height: 10px;
+        margin: 5px;
+    }
 }
 
 .rank-circle-solved {
     transition: background-color 0.3s ease-in-out;
     background-color: #fffb08;
-    outline: 1px solid #ebd405;
+    outline: 1px solid #cfbc0c;
     width: 12px;
     height: 12px;
     border-radius: 50%;
     margin: 5px;
+    @media screen and (max-width: 1000px) {
+        width: 10px;
+        height: 10px;
+        margin: 5px;
+    }
 }
 
 .rank-input-box {
@@ -206,6 +243,9 @@ body {
     background-color: #b2daff;
     border-color: #e1e9ee;
     box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.05);
+    @media screen and (max-width: 1000px) {
+        padding: 1rem 1rem;
+    }
 }
 
 
@@ -255,7 +295,7 @@ body {
         flex-direction: row;
         justify-content: center;
         align-items: start;
-        background-color: #e9eff7;
+        background-color: #e0edff;
     }
 }
 
@@ -470,7 +510,7 @@ body {
     border-radius: 0.6rem;
     @media screen and (max-width: 1000px) {
         height: 9.5rem;
-        box-shadow: 2px 2px 5px 3px rgba(24, 25, 27, 0.15);
+        box-shadow: 3px 3px 5px 4px rgba(24, 25, 27, 0.12);
     }
 }
 
@@ -541,6 +581,32 @@ body {
     }
 }
 
+.ranking_comment_wrap {
+    height: 91vh;
+    overflow-y: hidden;
+    position: sticky; bottom:0;
+    @media screen and (max-width: 1000px) {
+        height:auto;
+        overflow: auto;
+        position:initial;    
+    }
+}
+
+#comment, #messageBtn {
+    @media screen and (max-width: 1000px) {
+        font-size:0.8em;
+    }
+}
+
+.ranking_comment {
+    margin-top: 3rem!important;
+    margin-bottom: 3rem!important;
+    @media screen and (max-width: 1000px) {
+        margin-top: 0rem!important;
+        margin-bottom: 0rem!important;
+    }
+}
+
 .quiz_wrap {
     height: 91vh;
     overflow-y: scroll;
@@ -553,7 +619,10 @@ body {
         overflow-y: hidden;
         display:flex;
         align-items: center;
-        background-color: #9fd8ff;
+        /* background-color: #8cbcff; */
+        background-image: url( "/static/bg01.png" );
+        background-size:auto;
+        background-attachment: local;
     }
 }
 

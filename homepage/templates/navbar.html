@@ -60,17 +60,17 @@
                 </li>
                 {% if all_user_data %}
                 <li class="nav-item me-3 nav-rank mobile-display-none">
-                    <a class="nav-link text-nav" href="{{ url_for('status.show') }}"><span class="fw-normal mobile-display-only">/&nbsp;&nbsp;</span><b class="fw-bold">아재퀴즈</b></a>
+                    <a class="nav-link text-nav" href="{{ url_for('status.show') }}"><b class="fw-bold">아재퀴즈</b></a>
                 </li>
                 {% endif %}
                 <li class="nav-item me-3 nav-rank">
-                    <a class="nav-link text-nav" href="{{ url_for('question._list') }}"><span class="fw-normal mobile-display-only">/&nbsp;&nbsp;</span><b class="fw-bold">자유게시판</b></a>
+                    <a class="nav-link text-nav" href="{{ url_for('question._list') }}"><span class="fw-normal mobile-display-only">>&nbsp;&nbsp;</span><b class="fw-bold">자유게시판</b></a>
                 </li>
                 <li class="nav-item me-3 nav-rank">
-                    <a class="nav-link text-nav" href="{{ url_for('rank.rank') }}"><span class="fw-normal mobile-display-only">/&nbsp;&nbsp;</span><b class="fw-bold">순위표</b></a>
+                    <a class="nav-link text-nav" href="{{ url_for('rank.rank') }}"><span class="fw-normal mobile-display-only">>&nbsp;&nbsp;</span><b class="fw-bold">순위표</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-nav" href="{{ url_for('auth.logout') }}"><span class="fw-normal mobile-display-only">/&nbsp;&nbsp;</span><b class="fw-bold">{{
+                    <a class="nav-link text-nav" href="{{ url_for('auth.logout') }}"><span class="fw-normal mobile-display-only">>&nbsp;&nbsp;</span><b class="fw-bold">{{
                             g.user.username }}</b>님 (로그아웃)</a>
                 </li>
             </ul>
@@ -78,10 +78,12 @@
             <div class="collapse navbar-collapse justify-content-end px-2 fs-5" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item me-3">
-                        <a class="nav-link text-nav" href="{{ url_for('auth.signup') }}">/&nbsp;&nbsp;<b class="fw-bold">계정생성</b></a>
+                        <a class="nav-link text-nav" href="{{ url_for('auth.signup') }}"><span class="mobile-display-none">/&nbsp;&nbsp;</span>
+                            <span class="fw-normal mobile-display-only">>&nbsp;&nbsp;</span><b class="fw-bold">계정생성</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-nav" href="{{ url_for('auth.login') }}">/&nbsp;&nbsp;<b class="fw-bold">로그인</b></a>
+                        <a class="nav-link text-nav" href="{{ url_for('auth.login') }}"><span class="mobile-display-none">/&nbsp;&nbsp;</span>
+                            <span class="fw-normal mobile-display-only">>&nbsp;&nbsp;</span><b class="fw-bold">로그인</b></a>
                     </li>
                 </ul>
                 {% endif %}

@@ -4,10 +4,10 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='reset.min.css') }}" />
 <div class="container-fruid whole_wrap">
     <div class="row">
-        <div class="col-lg-4 quiz_wrap bg-primary">
+        <div class="col-lg-4 ranking_comment_wrap bg-primary">
             <div class="d-flex flex-wrap justify-content-center align-items-start mx-3 my-4 p-3">
                 <div class="container-fruid ms-2">
-                    <div class="mx-2 my-5 text-center">
+                    <div class="mx-2 text-center ranking_comment">
                         {% if solved_quiz_ids == [] %}
                             <h1 class="rank-text-user">현재&nbsp;&nbsp;<b class="text-white text-opacity-75">{{
                                     g.user.username }}</b>&nbsp;&nbsp;님은</h1>
