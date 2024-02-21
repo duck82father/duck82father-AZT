@@ -52,7 +52,12 @@ def api_endpoint():
 
     if (result != [] and requestkey[-1:] == "번") or (result != [] and requestkey[-2:] == "문제") or (result != [] and requestkey[-1:] == "qjs"):
         result = int(result[0])
-        if result > 120:
+        print(result)
+        if Solved.query.filter_by(user_id=g.user.id, quiz_id=result).first() != None:
+            print('?')
+            result = '이미 맞춘 문제입니다👍'
+            resulttype = "alreadySolved"
+        elif result > 120:
             result = "문제가 없습니다. [ 범위 1 ~ 120번 ]"
             resulttype = "order" 
         else: 
@@ -68,14 +73,14 @@ def api_endpoint():
                 if Solved.query.filter_by(user_id=g.user.id, quiz_id=quiznumber).first() != None:
                     result = '이미 맞춘 문제입니다👍'
                     resulttype = "alreadySolved"
-                    answer = azquiz.query.get(quiznumber).answer
+                    # answer = azquiz.query.get(quiznumber).answer
                 else:
                     result = '<b class="fw-bold">정답</b>입니다🥳'
                     resulttype = "answer"
                     answer = insertAnswerCheckToDB (quiznumber)
                     solved_count = countSolved ()
             else :
-                result = "다시 한 번 고민해보세요!"
+                result = "오답입니다"
                 resulttype = "order"
     
     else :      

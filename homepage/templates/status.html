@@ -202,7 +202,6 @@
                             clearCheckBox();
                             sendMessageQuiz(result, 'yourmsg');
                             toScrollMoving(result);
-                            console.log(quiznumber);
                             circle = document.getElementById(quiznumber+'circle');
                             elementCircle = circle;
                             circle.setAttribute('style', 'background-color:#fff494;box-shadow:0.5px 0.5px 3px #272b33;');
@@ -211,6 +210,10 @@
                             sendMessage(result, 'yourmsg');
                             changeDivSpan(quiznumber, answer);
                             addSolvedCountNumber();
+                            hintButton.setAttribute('style', 'background: #99FF99;');
+                            hintButton.innerHTML = result;
+                            circle = document.getElementById(quiznumber+'circle');
+                            circle.setAttribute('class', 'circle-solved all-circle');
                             if (solvedCount == 120) {
                                 const toastLiveExample = document.getElementById('liveToast')
                                 document.getElementById('toastText').innerHTML = '🌈 축하합니다! 모든 문제를 문제 맞추셨습니다! 🌈';
@@ -226,12 +229,14 @@
                             };
                             quiznumber = 0
                         } else if (resulttype == 'alreadySolved') {
+                            hintButton.innerHTML = result;
+                            hintButton.setAttribute('style', 'background: #CCFFFF;');
                             sendMessage(result, 'yourmsg');
                             quiznumber = 0
                         } else {
                             sendMessage(result, 'yourmsg');
                             hintButton.innerHTML = result;
-                            hintButton.setAttribute('style', 'background: #fff494;');
+                            hintButton.setAttribute('style', 'background: #FFCCCC;');
                         };
 
                     } else {
@@ -260,6 +265,11 @@
                             clearCheckBox();
                             sendMessageQuiz(result, 'yourmsg');
                             toScrollMoving(result);
+                        } else if (resulttype == 'alreadySolved') {
+                            hintButton.innerHTML = result;
+                            hintButton.setAttribute('style', 'background: #CCFFFF;');
+                            sendMessage(result, 'yourmsg');
+                            quiznumber = 0
                         } else {
                             sendMessage(result, 'yourmsg');
                         };
@@ -431,6 +441,11 @@
             inputPlaceHolder = document.getElementById('inputPlaceHolder');
             inputPlaceHolder.setAttribute('placeholder','답변 입력');
         }
+
+        inputPlaceHolder.addEventListener('click', function(){
+            hintButton.innerHTML = '초성 힌트';
+            hintButton.setAttribute('style', '');
+        });
 
         sendMessage('<b class="fw-bold">{{ g.user.username }}</b>님 환영합니다!🖐️', 'yourmsg')
         sendMessage('<b class="fw-bold">아재퀴즈 문제</b>를 선택하세요<br>[ 입력 : 1 ~ 120번 ]', 'yourmsg')

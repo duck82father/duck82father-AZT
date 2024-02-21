@@ -749,8 +749,10 @@ body {
         margin-top: 5px;
         margin-bottom: 25px;
         font-size: 1em;
-        width:65%;
+        width:60%;
+        height:4.5rem;
         border-radius: 6px;
+        float: right;
     }
 }
 
@@ -759,7 +761,8 @@ body {
         margin-top: 5px;
         margin-bottom: 25px;
         font-size: 1em;
-        width:32%;
+        width:35%;
+        height:4.5rem;
         border: 0;
         background: #dbeeff;
         border-radius: 6px;
