@@ -9,8 +9,7 @@
             <div class="d-flex flex-wrap justify-content-center align-items-start mx-3 my-4 p-3 mobile-quiz">
                 {% for quiz in quizs %}
                 <div class="my-1 quizBoxSelect" id="{{ loop.index }}">
-                    <div class="col-10 card azcard m-3" style="width: 13.5rem; height: 11rem; border-radius: 0.6rem;"
-                        id="quizbox{{ loop.index }}">
+                    <div class="col-10 card azcard m-3" id="quizbox{{ loop.index }}">
                         {% if quiz.id in solved_quiz_ids %}
                         <div class="card-body text-quiz quizsuccess-top">
                             <h5 class="card-title fs-5 text fw-bold lh-base quizsuccess-text"
@@ -43,18 +42,103 @@
                     </div>
                 </div>
                 {% endfor %}
+                <div class="my-1 quizBoxSelect" id="">
+                    <div class="card azcard invisible" style="height: 0.1rem;"></div>
+                </div>
             </div>
         </div>
+
+        {% if g.user and not all_user_data %}
+        <div class="mobile-scores">
+            <div class="scores-circles">
+                <ul class="circles">
+                    {% for i in range(1, 16) %}
+                    {% if i in solved_quiz_ids %}
+                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
+                    {% else %}
+                    <li class="circle all-circle" id="{{ i }}circle"></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <ul class="circles">
+                    {% for i in range(16, 31) %}
+                    {% if i in solved_quiz_ids %}
+                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
+                    {% else %}
+                    <li class="circle all-circle" id="{{ i }}circle"></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <ul class="circles">
+                    {% for i in range(31, 46) %}
+                    {% if i in solved_quiz_ids %}
+                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
+                    {% else %}
+                    <li class="circle all-circle" id="{{ i }}circle"></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <ul class="circles">
+                    {% for i in range(46, 61) %}
+                    {% if i in solved_quiz_ids %}
+                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
+                    {% else %}
+                    <li class="circle all-circle" id="{{ i }}circle"></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <ul class="circles">
+                    {% for i in range(61, 76) %}
+                    {% if i in solved_quiz_ids %}
+                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
+                    {% else %}
+                    <li class="circle all-circle" id="{{ i }}circle"></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <ul class="circles">
+                    {% for i in range(76, 91) %}
+                    {% if i in solved_quiz_ids %}
+                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
+                    {% else %}
+                    <li class="circle all-circle" id="{{ i }}circle"></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <ul class="circles">
+                    {% for i in range(91, 106) %}
+                    {% if i in solved_quiz_ids %}
+                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
+                    {% else %}
+                    <li class="circle all-circle" id="{{ i }}circle"></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <ul class="circles">
+                    {% for i in range(106, 121) %}
+                    {% if i in solved_quiz_ids %}
+                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
+                    {% else %}
+                    <li class="circle all-circle" id="{{ i }}circle"></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
 
         <div class="col-lg-5 chat_wrap">
             <div class="chat">
                 <div class="inner mobile-display-none">
                     <!-- 대화 아이템이 동적으로 추가될 공간 -->
                 </div>
+                <button class="mobile-display-only h5 p-4 chatbotbutton" id="hint-button">초성 힌트</button>
                 <input type="text" class="mymsg h5 p-4 chatbotinput" placeholder="내용 입력 후 엔터를 누르세요">
                 <div class="text-center">
-                    <p class="footer-text">문제를&nbsp;풀고&nbsp;싶다면
-                        <b class="fw-bold text-quiz">번호 [1 ~ 120번]</b>를<b class="mobile-show"><br></b><b class="mobile-avoid">&nbsp;&nbsp;/&nbsp;&nbsp;</b>어려울 땐
+                    <p class="footer-text mobile-display-none">문제를&nbsp;풀고&nbsp;싶다면
+                        <b class="fw-bold text-quiz">번호 [1 ~ 120번]</b>를<b class="mobile-show"><br></b><b
+                            class="mobile-avoid">&nbsp;&nbsp;/&nbsp;&nbsp;</b>어려울 땐
                         <b class="fw-bold text-quiz">[힌트]</b>라고 입력해&nbsp;주세요👍
                     </p><br>
                     <p class="text-black-50">Copyrightⓒ 2024 duck82father All rights reserved.</p>
@@ -83,9 +167,11 @@
         var mymsgInput = document.querySelector('.mymsg');
         var yourmsgInput = document.querySelector('.yourmsg');
         var chatInner = document.querySelector('.chat_wrap .inner');
-        var elementBoxGlobal = null
-        var elementTextGlobal = null
-        var quiznumber = 0
+        var hintButton = document.getElementById('hint-button');
+        var elementBoxGlobal = null;
+        var elementTextGlobal = null;
+        var elementCircle = null;
+        var quiznumber = 0;
 
         // XMLHttpRequest 객체 생성
         var xhr = new XMLHttpRequest();
@@ -105,11 +191,15 @@
                         var answer = JSON.parse(xhr.responseText).answer;
                         var solvedCount = JSON.parse(xhr.responseText).solvedCount;
                         if (resulttype == 'quiz') {
-                            clearCheckBox()
+                            clearCheckBox();
                             sendMessageQuiz(result, 'yourmsg');
                             toScrollMoving(result);
+                            console.log(quiznumber);
+                            circle = document.getElementById(quiznumber+'circle');
+                            elementCircle = circle;
+                            circle.setAttribute('style', 'background-color:#fff494;box-shadow:1px 1px 6px #272b33;');
                         } else if (resulttype == 'answer') {
-                            clearCheckBox()
+                            clearCheckBox();
                             sendMessage(result, 'yourmsg');
                             changeDivSpan(quiznumber, answer);
                             addSolvedCountNumber();
@@ -117,13 +207,13 @@
                                 const toastLiveExample = document.getElementById('liveToast')
                                 document.getElementById('toastText').innerHTML = '🌈 축하합니다! 모든 문제를 문제 맞추셨습니다! 🌈';
                                 const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-                                toastBootstrap.show()
+                                toastBootstrap.show();
                             } else if (solvedCount % 10 == 0) {
                                 // alert('👏 축하합니다! 총 ' + solvedCount + '문제 맞추셨습니다! 👏');
-                                const toastLiveExample = document.getElementById('liveToast')
+                                const toastLiveExample = document.getElementById('liveToast');
                                 document.getElementById('toastText').innerHTML = '💐 축하합니다! 총 ' + solvedCount + '문제 맞추셨습니다! 💐';
-                                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-                                toastBootstrap.show()
+                                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+                                toastBootstrap.show();
                             } else {
                             };
                             quiznumber = 0
@@ -132,6 +222,8 @@
                             quiznumber = 0
                         } else {
                             sendMessage(result, 'yourmsg');
+                            hintButton.innerHTML = result;
+                            hintButton.setAttribute('style', 'background: #fff494;');
                         };
 
                     } else {
@@ -157,7 +249,7 @@
                         var answer = JSON.parse(xhr.responseText).answer;
                         var solvedCount = JSON.parse(xhr.responseText).solvedCount;
                         if (resulttype == 'quiz') {
-                            clearCheckBox()
+                            clearCheckBox();
                             sendMessageQuiz(result, 'yourmsg');
                             toScrollMoving(result);
                         } else {
@@ -171,6 +263,29 @@
                 xhr.send(JSON.stringify(data));         // 데이터를 JSON 문자열로 변환하여 전송
 
                 this.value = '';
+            }
+        });
+
+
+        // 모바일 힌트 버튼
+        hintButton.addEventListener('click', function (e) {
+            console.log('click')
+            if (quiznumber > 0) {
+                xhr.open('POST', 'api/endpoint', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onload = function () {
+
+                    if (xhr.status === 200) {
+                        var result = JSON.parse(xhr.responseText).result;
+                        hintButton.innerHTML = result;
+                        hintButton.setAttribute('style', 'background: #fff494;');
+                    } else {
+                        console.error('Request failed. Status:', xhr.status);
+                    }
+                };
+                var data = { key:'hint', quiznumber: quiznumber };
+                console.log(data);
+                xhr.send(JSON.stringify(data));
             }
         });
 
@@ -219,12 +334,16 @@
 
         function clearCheckBox() {
             if (elementBoxGlobal) {
-                elementBoxGlobal.setAttribute('class', 'col-10 card azcard m-3')
-                elementTextGlobal.setAttribute('style', 'word-break:keep-all;')
+                elementBoxGlobal.setAttribute('class', 'col-10 card azcard m-3');
+                elementTextGlobal.setAttribute('style', 'word-break:keep-all;');
+            }
+            if (elementCircle) {
+                elementCircle.setAttribute('style','');
             }
         }
 
         function toScrollMoving(result) {
+            quiznumber = result;
             elementBox = document.getElementById('quizbox' + result);
             elementText = document.getElementById('quiz' + result);
             if (elementBox) {
@@ -234,6 +353,8 @@
             }
             elementBoxGlobal = elementBox
             elementTextGlobal = elementText
+            hintButton.innerHTML = '초성 힌트';
+            hintButton.setAttribute('style', '');
         }
 
         function changeDivSpan(quiznumber, answer) {
@@ -255,6 +376,8 @@
         function addSolvedCountNumber() {
             solvedCountNumber = document.getElementById('solvedCountNumber').innerHTML;
             document.getElementById('solvedCountNumber').innerHTML = Number(solvedCountNumber) + 1;
+            solvedCountNumberMenu = document.getElementById('solvedCountNumberMenu').innerHTML;
+            document.getElementById('solvedCountNumberMenu').innerHTML = Number(solvedCountNumberMenu) + 1;
         }
 
         var quizboxAll = document.querySelectorAll('.quizBoxSelect');
@@ -265,9 +388,24 @@
                 quiznumber = this.id;
                 sendMessageQuiz(this.id, 'yourmsg');
                 toScrollMoving(this.id);
+                circle = document.getElementById(this.id+'circle');
+                elementCircle = circle;
+                circle.setAttribute('style', 'background-color:#fff494;box-shadow:1px 1px 6px #272b33;');
             });
         });
 
+        var circleAll = document.querySelectorAll('.all-circle');
+
+        circleAll.forEach(function (circle) {
+            circle.addEventListener('click', function () {
+                clearCheckBox();
+                circleId = this.id;
+                circleId = circleId.substring(0, circleId.indexOf('c'));
+                toScrollMoving(circleId);
+                elementCircle = this;
+                this.setAttribute('style', 'background-color:#fff494;box-shadow:1px 1px 6px #272b33;');
+            });
+        });
 
         function goToFirstUnSolvedDiv() {
             // id가 'unSolvedDiv*'인 모든 div 요소를 찾습니다.

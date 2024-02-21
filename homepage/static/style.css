@@ -244,6 +244,17 @@ body {
     }
 }
 
+.mobile-scores {
+    display: none;
+    @media screen and (max-width: 1000px) {
+        display: flex;
+        height: 40dvh;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 .scores-number {
     color: #f3f169;
 }
@@ -260,9 +271,7 @@ body {
 .scores-circles {
     display: flex;
     flex-direction: column;
-    justify-content: start;
     align-items: center;
-    padding-right: 10px;
 }
 
 .circles {
@@ -278,6 +287,13 @@ body {
     height: 10px;
     border-radius: 50%;
     margin: 3px;
+    @media screen and (max-width: 1000px) {
+        width: 13px;
+        height: 13px;
+        margin: 1.3dvh 1.3dvw;
+        background-color: #fcfeff;
+        box-shadow: 0.5px 0.5px 3px #484e58;
+    }
 }
 
 .circle-solved {
@@ -288,6 +304,14 @@ body {
     height: 10px;
     border-radius: 50%;
     margin: 3px;
+    @media screen and (max-width: 1000px) {
+        width: 13px;
+        height: 13px;
+        margin: 1.3dvh 1.3dvw;
+        background-color: #84afff;
+        outline: 0px;
+        box-shadow: 0.5px 0.5px 3px #033d9b;
+    }
 }
 
 .font-color-navi{
@@ -418,6 +442,12 @@ body {
 .azcard {
     border: none;
     box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.075);
+    width: 13.5rem;
+    height: 11rem;
+    border-radius: 0.6rem;
+    @media screen and (max-width: 1000px) {
+        height: 9.5rem;
+    }
 }
 
 .card-footer:last-child {
@@ -494,7 +524,7 @@ body {
     position: sticky; bottom:0;
 
     @media screen and (max-width: 1000px) {
-        height: 60dvh;
+        height: 30dvh;
         overflow-x: scroll;
         overflow-y: hidden;
         display:flex;
@@ -524,7 +554,7 @@ body {
 .chat_wrap {
     height:91vh;
     @media screen and (max-width: 1000px) {
-        height: 57dvh;
+        height: 18dvh;
     }
 }
 
@@ -538,7 +568,7 @@ body {
     /* 화면 높이로 설정 */
 
     @media screen and (max-width: 1000px) {
-        height: 57dvh;
+        height: 28dvh;
         width: 90%;
         margin-left: auto;
         margin-right: auto;
@@ -693,8 +723,23 @@ body {
     text-align: center;
 
     @media screen and (max-width: 1000px) {
-        margin-top: 15px;
+        margin-top: 10px;
         font-size: 1em;
+        width:63%;
+        border-radius: 6px;
+    }
+}
+
+.chatbotbutton {
+    @media screen and (max-width: 1000px) {
+        margin-top: 10px;
+        font-size: 1em;
+        width:35%;
+        border: 0;
+        background: #dbeeff;
+        border-radius: 6px;
+        box-sizing: border-box;
+        text-align: center;
     }
 }
 
@@ -737,6 +782,7 @@ input:focus {
     border-bottom: 1px solid #ccc;
     @media screen and (max-width: 1000px) {
         height:2.5em;
+        font-size:0.9em;
     }
 }
 
@@ -745,8 +791,20 @@ input:focus {
     background-color:#eff4ff;
     font-weight:700;
     color:#111a97;
+    @media screen and (max-width: 1000px) {
+        font-size:0.9em;
+    }
 }
 
 .table-height td{
     vertical-align:middle;
+    @media screen and (max-width: 1000px) {
+        font-size:0.9em;
+    }
+}
+
+.page-link {
+    @media screen and (max-width: 1000px) {
+        font-size:0.9em;
+    }
 }

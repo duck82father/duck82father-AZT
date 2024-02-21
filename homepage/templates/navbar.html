@@ -56,7 +56,7 @@
             style="flex-grow:0;">
             <ul class="navbar-nav me-3">
                 <li class="nav-item me-3 nav-rank mobile-display-only">
-                    <p class="nav-link text-nav fw-bold"><span class="fw-normal mobile-display-only">/&nbsp;&nbsp;</span>SCORES&nbsp;:&nbsp;<b id="solvedCountNumber" class="scores-number">{{ solved_quiz_ids|length }}</b>&nbsp;of&nbsp;120</p>
+                    <p class="nav-link fw-bold text-warning">[ 맞춘 문제 ]&nbsp;120개&nbsp;중&nbsp;<b id="solvedCountNumberMenu" class="scores-number">{{ solved_quiz_ids|length }}</b>개</p>
                 </li>
                 {% if all_user_data %}
                 <li class="nav-item me-3 nav-rank mobile-display-none">
