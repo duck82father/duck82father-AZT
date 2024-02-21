@@ -70,7 +70,8 @@
 
 .mobile-login {
     @media screen and (max-width: 1000px) {
-        width: 17.5rem;
+        /* font-size: 1.5rem; */
+        width: 14.5rem;
         margin: auto;
         padding-bottom: 1em!important;
     }
@@ -248,12 +249,28 @@ body {
     display: none;
     @media screen and (max-width: 1000px) {
         display: flex;
-        height: 40dvh;
+        /* height: 40dvh; */
+        padding-top: 0px;
+        padding-bottom: 10px;    
         flex-direction: row;
         justify-content: center;
-        align-items: center;
+        align-items: start;
+        background-color: #e9eff7;
     }
 }
+
+.mobile-input-text{
+    display: none;
+    @media screen and (max-width: 1000px) {
+        display: flex;
+        padding-top: 0px;
+        flex-direction: row;
+        justify-content: center;
+        align-items: start;
+    }
+}
+
+
 
 .scores-number {
     color: #f3f169;
@@ -292,7 +309,7 @@ body {
         height: 13px;
         margin: 1.3dvh 1.3dvw;
         background-color: #fcfeff;
-        box-shadow: 0.5px 0.5px 3px #484e58;
+        box-shadow: 0.3px 0.3px 2px #484e58;
     }
 }
 
@@ -310,12 +327,18 @@ body {
         margin: 1.3dvh 1.3dvw;
         background-color: #84afff;
         outline: 0px;
-        box-shadow: 0.5px 0.5px 3px #033d9b;
+        box-shadow: 0.3px 0.3px 2px #033d9b;
     }
 }
 
 .font-color-navi{
     color: #1521c2;
+}
+
+.mobile-font-color-navi{
+    @media screen and (max-width: 1000px) {
+        color: #1521c2;
+    }
 }
 
 .nav-font {
@@ -447,6 +470,7 @@ body {
     border-radius: 0.6rem;
     @media screen and (max-width: 1000px) {
         height: 9.5rem;
+        box-shadow: 2px 2px 5px 3px rgba(24, 25, 27, 0.15);
     }
 }
 
@@ -524,11 +548,12 @@ body {
     position: sticky; bottom:0;
 
     @media screen and (max-width: 1000px) {
-        height: 30dvh;
+        height: 40dvh;
         overflow-x: scroll;
         overflow-y: hidden;
         display:flex;
         align-items: center;
+        background-color: #9fd8ff;
     }
 }
 
@@ -554,7 +579,7 @@ body {
 .chat_wrap {
     height:91vh;
     @media screen and (max-width: 1000px) {
-        height: 18dvh;
+        height: auto;
     }
 }
 
@@ -568,11 +593,9 @@ body {
     /* 화면 높이로 설정 */
 
     @media screen and (max-width: 1000px) {
-        height: 28dvh;
+        height: auto;
         width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 0;
+        margin: auto;
     }
 }
 
@@ -723,18 +746,20 @@ body {
     text-align: center;
 
     @media screen and (max-width: 1000px) {
-        margin-top: 10px;
+        margin-top: 5px;
+        margin-bottom: 25px;
         font-size: 1em;
-        width:63%;
+        width:65%;
         border-radius: 6px;
     }
 }
 
 .chatbotbutton {
     @media screen and (max-width: 1000px) {
-        margin-top: 10px;
+        margin-top: 5px;
+        margin-bottom: 25px;
         font-size: 1em;
-        width:35%;
+        width:32%;
         border: 0;
         background: #dbeeff;
         border-radius: 6px;

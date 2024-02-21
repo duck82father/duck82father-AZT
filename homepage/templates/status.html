@@ -48,7 +48,31 @@
             </div>
         </div>
 
+        <div class="col-lg-5 chat_wrap">
+            <div class="chat">
+                <div class="inner mobile-display-none">
+                    <!-- 대화 아이템이 동적으로 추가될 공간 -->
+                </div>
+                <div class="mobile-input-text">
+                    <p class="text-black-50 nav-font h5" style="text-align: center; padding-top: 25px;">정답 입력창</p><br>
+                </div>
+                <button class="mobile-display-only h5 p-4 chatbotbutton" id="hint-button">초성 힌트</button>
+                <input type="text" class="mymsg h5 p-4 chatbotinput" id="inputPlaceHolder" placeholder="내용 입력 후 엔터를 누르세요">
+                <div class="text-center mobile-display-none">
+                    <p class="footer-text">문제를&nbsp;풀고&nbsp;싶다면
+                        <b class="fw-bold text-quiz">번호 [1 ~ 120번]</b>를<b class="mobile-show"><br></b><b
+                            class="mobile-avoid">&nbsp;&nbsp;/&nbsp;&nbsp;</b>어려울 땐
+                        <b class="fw-bold text-quiz">[힌트]</b>라고 입력해&nbsp;주세요👍
+                    </p><br>
+                    <p class="text-black-50 mobile-display-none">Copyrightⓒ 2024 duck82father All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+
         {% if g.user and not all_user_data %}
+        <div class="mobile-scores">
+            <p class="text-black-50 nav-font h5" style="text-align: center; margin-bottom:0px; padding-top: 25px;">문제 선택 하기</p>
+        </div>
         <div class="mobile-scores">
             <div class="scores-circles">
                 <ul class="circles">
@@ -125,26 +149,10 @@
                 </ul>
             </div>
         </div>
+        <p class="text-black-50 mobile-display-only" style="font-size: 0.75rem!important; text-align: center; padding-top:10px; padding-bottom: 20px;">Copyrightⓒ 2024 duck82father All rights reserved.</p>
         {% endif %}
 
 
-        <div class="col-lg-5 chat_wrap">
-            <div class="chat">
-                <div class="inner mobile-display-none">
-                    <!-- 대화 아이템이 동적으로 추가될 공간 -->
-                </div>
-                <button class="mobile-display-only h5 p-4 chatbotbutton" id="hint-button">초성 힌트</button>
-                <input type="text" class="mymsg h5 p-4 chatbotinput" placeholder="내용 입력 후 엔터를 누르세요">
-                <div class="text-center">
-                    <p class="footer-text mobile-display-none">문제를&nbsp;풀고&nbsp;싶다면
-                        <b class="fw-bold text-quiz">번호 [1 ~ 120번]</b>를<b class="mobile-show"><br></b><b
-                            class="mobile-avoid">&nbsp;&nbsp;/&nbsp;&nbsp;</b>어려울 땐
-                        <b class="fw-bold text-quiz">[힌트]</b>라고 입력해&nbsp;주세요👍
-                    </p><br>
-                    <p class="text-black-50">Copyrightⓒ 2024 duck82father All rights reserved.</p>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -197,7 +205,7 @@
                             console.log(quiznumber);
                             circle = document.getElementById(quiznumber+'circle');
                             elementCircle = circle;
-                            circle.setAttribute('style', 'background-color:#fff494;box-shadow:1px 1px 6px #272b33;');
+                            circle.setAttribute('style', 'background-color:#fff494;box-shadow:0.5px 0.5px 3px #272b33;');
                         } else if (resulttype == 'answer') {
                             clearCheckBox();
                             sendMessage(result, 'yourmsg');
@@ -390,7 +398,7 @@
                 toScrollMoving(this.id);
                 circle = document.getElementById(this.id+'circle');
                 elementCircle = circle;
-                circle.setAttribute('style', 'background-color:#fff494;box-shadow:1px 1px 6px #272b33;');
+                circle.setAttribute('style', 'background-color:#fff494;box-shadow:0.5px 0.5px 3px #272b33;');
             });
         });
 
@@ -403,7 +411,7 @@
                 circleId = circleId.substring(0, circleId.indexOf('c'));
                 toScrollMoving(circleId);
                 elementCircle = this;
-                this.setAttribute('style', 'background-color:#fff494;box-shadow:1px 1px 6px #272b33;');
+                this.setAttribute('style', 'background-color:#fff494;box-shadow:0.5px 0.5px 3px #272b33;');
             });
         });
 
@@ -416,6 +424,12 @@
 
             // 가장 작은 id를 가진 div 요소를 스크롤합니다.
             firstUnSolvedDiv.scrollIntoView({ behavior: 'smooth', block: "center", inline: "center" })
+        }
+
+        const pageWidth = document.documentElement.scrollWidth;
+        if (pageWidth < 1000) {
+            inputPlaceHolder = document.getElementById('inputPlaceHolder');
+            inputPlaceHolder.setAttribute('placeholder','답변 입력');
         }
 
         sendMessage('<b class="fw-bold">{{ g.user.username }}</b>님 환영합니다!🖐️', 'yourmsg')
