@@ -104,6 +104,8 @@ body {
 .navbar {
     @media screen and (max-width: 1000px) {
         --bs-navbar-padding-y:1.1rem;
+        padding:0;
+        --bs-navbar-brand-padding-y:1rem;
     }
 }
 
@@ -122,7 +124,7 @@ body {
     z-index:200;
     height:9dvh;
     @media screen and (max-width: 1000px) {
-        height:5rem;
+        height:4rem;
     }
 }
 
@@ -142,6 +144,11 @@ body {
     color: #203bd4;
     font-size: 2.5em;
     margin-right: 20px;
+    @media screen and (max-width: 1000px) {
+        font-size:1.5em;
+        margin-right: 0;
+        padding-bottom: 0;
+    }
 }
 
 .rank-text-user {
@@ -151,9 +158,9 @@ body {
     color: #ffffff;
     font-size: 2.5em;
     @media screen and (max-width: 1000px) {
-        font-size: 1.75em;
+        font-size: 1.5em;
         padding-top: 0px;
-        padding-bottom: 20px;
+        padding-bottom: 12px;
     }
 }
 
@@ -162,6 +169,11 @@ body {
     padding-left:20px;
     padding-right:10px;
     font-size: 2em;
+    @media screen and (max-width:1000px){
+        font-size: 1.6em;
+        padding-left:10px;
+        padding-right:5px;
+    }
 }
 
 .rank-scores-number{
@@ -175,6 +187,11 @@ body {
     font-family: 'EliceDigitalBaeum_Bold';
     color: #8f9eb3;
     font-size: 1.2em;
+    @media screen and (max-width: 1000px) {
+        border-top: 0;
+        padding-top:0px;
+        margin-top:15px;
+    }
 }
 
 .rank-scores-box {
@@ -189,8 +206,10 @@ body {
     border-color: #e1e9ee;
     box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.05);
     @media screen and (max-width: 1000px) {
+        width:90dvw;
         padding: 1rem 1rem;
-        margin-top: 0rem;
+        margin-top: 0.5rem;
+        border-radius: 0.6rem 0.6rem 0 0;
     }
 }
 
@@ -203,6 +222,11 @@ body {
     box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.075);
     padding-left: 0 !important;
     padding-right: 0 !important;
+    @media screen and (max-width: 1000px) {
+        height:3.5rem;
+        margin-bottom:0.65rem;
+        box-shadow: 0px 0px 2px 1px rgb(77, 71, 71, 0.1);
+    }
 }
 
 .rank-circle {
@@ -236,8 +260,6 @@ body {
 .rank-input-box {
     padding: 1.5rem 1.5rem;
     margin-top: 1.5rem;
-    /* margin-left:0.6rem;
-    margin-right:0.6rem; */
     border-radius: 0.6rem;
     color: #091181;
     background-color: #b2daff;
@@ -245,29 +267,55 @@ body {
     box-shadow: 3px 3px 5px 4px rgb(77, 71, 71, 0.05);
     @media screen and (max-width: 1000px) {
         padding: 1rem 1rem;
+        margin-top: 0rem;
+        border-radius: 0 0 0.6rem 0.6rem;
     }
 }
 
 
+.rank-1st-number {
+    @media screen and (max-width: 1000px) {
+        width:20%;
+    }
+}
+
 .rank-1st-number:disabled {
     background-color: #203bd4;
+    @media screen and (max-width: 1000px) {
+        border: 1px solid blue;
+    }
 }
 
 .rank-1st-content:disabled {
     background-color: #3c58f7;
     border: 1px solid blue;
+    @media screen and (max-width: 1000px) {
+        border: 1px solid blue;
+    }
+}
+
+.rank-nth-number {
+    @media screen and (max-width: 1000px) {
+        width:20%;
+    }
 }
 
 .rank-nth-number:disabled {
     color: #605f69;
     background-color: #ecf1fd;
     border: 1px solid #aaa;
+    @media screen and (max-width: 1000px) {
+        border: 1px solid #ccc;
+    }
 }
 
 .rank-nth-content:disabled {
     color: #605f69;
     background-color: #fff;
     border: 1px solid #aaa;
+    @media screen and (max-width: 1000px) {
+        border: 1px solid #ccc;
+    }
 }
 
 .btn-group button:disabled {
@@ -289,7 +337,6 @@ body {
     display: none;
     @media screen and (max-width: 1000px) {
         display: flex;
-        /* height: 40dvh; */
         padding-top: 0px;
         padding-bottom: 10px;    
         flex-direction: row;
@@ -586,9 +633,9 @@ body {
     overflow-y: hidden;
     position: sticky; bottom:0;
     @media screen and (max-width: 1000px) {
-        height:auto;
-        overflow: auto;
-        position:initial;    
+        height:100%;
+        overflow-y:initial;
+        position:initial;
     }
 }
 
@@ -607,6 +654,79 @@ body {
     }
 }
 
+.ranking_wrap {
+    height: 91vh;
+    background-color: #d2ecfd;
+    position: sticky; bottom:0;
+    overflow-y: scroll;
+    @media screen and (max-width: 1000px) {
+        height: auto;
+        display:flex;
+        align-items: center;
+        background-color: #8cbcff;
+        justify-content: center!important;
+        overflow-y:visible;
+        position:initial;
+    }
+}
+
+.ranking_wrap::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.ranking_wrap::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.ranking_wrap::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #93cdfa;
+}
+
+.ranking_wrap::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+.ranking_wrap_inside {
+    @media screen and (max-width:1000px) {
+        padding: 0rem!important;
+        margin-top: 0rem!important;
+        margin-bottom: 0rem!important;
+        margin-right: 0rem!important;
+        margin-left: 0rem!important;
+        width:90dvw;
+        margin:auto;
+    }
+}
+
+.ranking_container {
+    @media screen and (max-width:1000px) {
+        padding-right: 0;
+        padding-left: 0;
+        margin-bottom:2rem;
+    }
+}
+
+
+.ranking_individual {
+    padding-right: 1.5rem!important;
+    margin: 1.5rem!important;
+    @media screen and (max-width:1000px) {
+        padding-right: 0!important;
+        margin: 0!important;
+    }
+}
+
+.mobile-rank-font {
+    @media screen and (max-width:1000px) {
+        font-size:0.7em;
+        --bs-btn-padding-x:0!important;
+    }
+}
+
+
 .quiz_wrap {
     height: 91vh;
     overflow-y: scroll;
@@ -619,7 +739,6 @@ body {
         overflow-y: hidden;
         display:flex;
         align-items: center;
-        /* background-color: #8cbcff; */
         background-image: url( "/static/bg01.png" );
         background-size:auto;
         background-attachment: local;
