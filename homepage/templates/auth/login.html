@@ -52,10 +52,10 @@
         }
         if (getCookie("autoLogin") && getCookie("username") && getCookie("password")) {
             document.loginForm.autoLogin.checked = true;
-        }
-        if (window.confirm('자동로그인 하시겠습니까?')){
+            if (window.confirm('자동로그인 하시겠습니까?')){
                 login();
             }
+        }
     }
 
     // 쿠키 저장 함수
