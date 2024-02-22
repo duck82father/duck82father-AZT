@@ -7,6 +7,10 @@
 
         <div class="col-sm-7 quiz_wrap">
             <div class="d-flex flex-wrap justify-content-center align-items-start mx-3 my-4 p-3 mobile-quiz">
+                <div class="my-1 quizBoxSelect mobile-display-only" id="">
+                    <div class="col-10 card azcard m-3 invisible" style="height: 0.1rem;">
+                    </div>
+                </div>
                 {% for quiz in quizs %}
                 <div class="my-1 quizBoxSelect" id="{{ loop.index }}">
                     <div class="col-10 card azcard m-3" id="quizbox{{ loop.index }}">
@@ -71,82 +75,21 @@
 
         {% if g.user and not all_user_data %}
         <div class="mobile-scores">
-            <p class="text-black-50 nav-font h5" style="text-align: center; margin-bottom:0px; padding-top: 25px;">문제 선택 하기</p>
+            <p class="nav-font h5" style="text-align: center; margin-bottom:0px; padding-top: 25px; color:#757DCC;">문제 선택 하기</p>
         </div>
         <div class="mobile-scores">
             <div class="scores-circles">
-                <ul class="circles">
-                    {% for i in range(1, 16) %}
-                    {% if i in solved_quiz_ids %}
-                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
-                    {% else %}
-                    <li class="circle all-circle" id="{{ i }}circle"></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <ul class="circles">
-                    {% for i in range(16, 31) %}
-                    {% if i in solved_quiz_ids %}
-                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
-                    {% else %}
-                    <li class="circle all-circle" id="{{ i }}circle"></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <ul class="circles">
-                    {% for i in range(31, 46) %}
-                    {% if i in solved_quiz_ids %}
-                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
-                    {% else %}
-                    <li class="circle all-circle" id="{{ i }}circle"></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <ul class="circles">
-                    {% for i in range(46, 61) %}
-                    {% if i in solved_quiz_ids %}
-                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
-                    {% else %}
-                    <li class="circle all-circle" id="{{ i }}circle"></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <ul class="circles">
-                    {% for i in range(61, 76) %}
-                    {% if i in solved_quiz_ids %}
-                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
-                    {% else %}
-                    <li class="circle all-circle" id="{{ i }}circle"></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <ul class="circles">
-                    {% for i in range(76, 91) %}
-                    {% if i in solved_quiz_ids %}
-                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
-                    {% else %}
-                    <li class="circle all-circle" id="{{ i }}circle"></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <ul class="circles">
-                    {% for i in range(91, 106) %}
-                    {% if i in solved_quiz_ids %}
-                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
-                    {% else %}
-                    <li class="circle all-circle" id="{{ i }}circle"></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <ul class="circles">
-                    {% for i in range(106, 121) %}
-                    {% if i in solved_quiz_ids %}
-                    <li class="circle-solved all-circle" id="{{ i }}circle"></li>
-                    {% else %}
-                    <li class="circle all-circle" id="{{ i }}circle"></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
+                {% for i in range(1, 9) %}
+                    <ul class="circles">
+                        {% for j in range((15*(i-1))+1,(15*(i-1))+16) %}
+                            {% if j in solved_quiz_ids %}
+                            <li class="circle-solved all-circle" id="{{ j }}circle"></li>
+                            {% else %}
+                            <li class="circle all-circle" id="{{ j }}circle"></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
             </div>
         </div>
         <div class="mobile-scores">

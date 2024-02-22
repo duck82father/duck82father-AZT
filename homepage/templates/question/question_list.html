@@ -15,9 +15,9 @@
 
         <div class="col-6">
             <div class="input-group">
-                <input type="text" id="search_kw" class="form-control" value="{{ kw or '' }}">
+                <input type="text" id="search_kw" class="form-control mobile-text-alttle-small" value="{{ kw or '' }}">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
+                    <button class="btn btn-outline-secondary mobile-text-alttle-small" type="button" id="btn_search">찾기</button>
                 </div>
             </div>
         </div>
@@ -85,11 +85,11 @@
         <!-- 이전페이지 -->
         {% if question_list.has_prev %}
         <li class="page-item">
-            <a class="page-link" data-page="{{ question_list.prev_num }}" href="javascript:void(0)">이전</a>
+            <a class="page-link mobile-text-alttle-small" data-page="{{ question_list.prev_num }}" href="javascript:void(0)">이전</a>
         </li>
         {% else %}
         <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="javascript:void(0)">이전</a>
+            <a class="page-link mobile-text-alttle-small" tabindex="-1" aria-disabled="true" href="javascript:void(0)">이전</a>
         </li>
         {% endif %}
         <!-- 페이지번호 -->
@@ -97,27 +97,27 @@
         {% if page_num %}
         {% if page_num != question_list.page %}
         <li class="page-item">
-            <a class="page-link" data-page="{{ page_num }}" href="javascript:void(0)">{{ page_num }}</a>
+            <a class="page-link mobile-text-alttle-small" data-page="{{ page_num }}" href="javascript:void(0)">{{ page_num }}</a>
         </li>
         {% else %}
         <li class="page-item active" aria-current="page">
-            <a class="page-link" href="javascript:void(0)">{{ page_num }}</a>
+            <a class="page-link mobile-text-alttle-small" href="javascript:void(0)">{{ page_num }}</a>
         </li>
         {% endif %}
         {% else %}
         <li class="disabled">
-            <a class="page-link" href="javascript:void(0)">...</a>
+            <a class="page-link mobile-text-alttle-small" href="javascript:void(0)">...</a>
         </li>
         {% endif %}
         {% endfor %}
         <!-- 다음페이지 -->
         {% if question_list.has_next %}
         <li class="page-item">
-            <a class="page-link" data-page="{{ question_list.next_num }}" href="javascript:void(0)">다음</a>
+            <a class="page-link mobile-text-alttle-small" data-page="{{ question_list.next_num }}" href="javascript:void(0)">다음</a>
         </li>
         {% else %}
         <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="javascript:void(0)">다음</a>
+            <a class="page-link mobile-text-alttle-small" tabindex="-1" aria-disabled="true" href="javascript:void(0)">다음</a>
         </li>
         {% endif %}
     </ul>
@@ -137,7 +137,7 @@
 
 <script type='text/javascript'>
 
-const page_elements = document.getElementsByClassName("page-link");
+const page_elements = document.getElementsByClassName("page-link mobile-text-alttle-small");
 Array.from(page_elements).forEach(function(element) {
     element.addEventListener('click', function() {
         document.getElementById('page').value = this.dataset.page;

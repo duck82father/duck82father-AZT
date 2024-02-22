@@ -17,33 +17,17 @@
                 <h2>SCORES&nbsp;&nbsp;&nbsp;<b id="solvedCountNumber" class="scores-number">{{ solved_quiz_ids|length }}</b>&nbsp;/&nbsp;120</h2>
             </div>
             <div class="scores-circles">
-                <ul class="circles">
-                    {% for i in range(1, 41) %}
-                    {% if i in solved_quiz_ids %}
-                    <li class="circle-solved" id="score{{ i }}"></li>
-                    {% else %}
-                    <li class="circle" id="score{{ i }}"></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <ul class="circles">
-                    {% for i in range(41, 81) %}
-                    {% if i in solved_quiz_ids %}
-                    <li class="circle-solved" id="score{{ i }}"></li>
-                    {% else %}
-                    <li class="circle" id="score{{ i }}"></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <ul class="circles">
-                    {% for i in range(81, 121) %}
-                    {% if i in solved_quiz_ids %}
-                    <li class="circle-solved" id="score{{ i }}"></li>
-                    {% else %}
-                    <li class="circle" id="score{{ i }}"></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
+                {% for i in range(1, 4) %}
+                    <ul class="circles">
+                        {% for j in range(40*(1-i)+1, 40*(1-i)+41) %}
+                            {% if j in solved_quiz_ids %}
+                            <li class="circle-solved" id="score{{ j }}"></li>
+                            {% else %}
+                            <li class="circle" id="score{{ j }}"></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
             </div>
         </div>
         {% endif %}

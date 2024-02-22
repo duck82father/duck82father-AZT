@@ -191,6 +191,7 @@ body {
         border-top: 0;
         padding-top:0px;
         margin-top:15px;
+        font-size: 1em;
     }
 }
 
@@ -239,6 +240,7 @@ body {
         width: 10px;
         height: 10px;
         margin: 5px;
+        margin-bottom: 4px;
     }
 }
 
@@ -254,6 +256,7 @@ body {
         width: 10px;
         height: 10px;
         margin: 5px;
+        margin-bottom: 4px;
     }
 }
 
@@ -342,7 +345,7 @@ body {
         flex-direction: row;
         justify-content: center;
         align-items: start;
-        background-color: #e0edff;
+        background-color: #CFE5FF;
     }
 }
 
@@ -999,6 +1002,7 @@ input:focus {
     @media screen and (max-width: 1000px) {
         height:2.5em;
         font-size:0.9em;
+        border-bottom: 1px solid #ddd;
     }
 }
 
@@ -1019,8 +1023,9 @@ input:focus {
     }
 }
 
-.page-link {
+.mobile-text-alttle-small {
     @media screen and (max-width: 1000px) {
         font-size:0.9em;
     }
 }
+
