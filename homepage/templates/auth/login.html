@@ -3,7 +3,7 @@
 <div class="container scroll-hide">
     <div class="py-4 mobile-display-none"></div>
     <div class="pt-5 pb-2 text-center mobile-padding-bottom-none">
-        <h1 class="introduce-font lh-base h1 mobile-login">
+        <h1 class="introduce-font lh-base h1 mobile-login-text">
             <b class="fw-bold mobile-font-color-navi">당신의 아재력</b>을<span class="mobile-display-only"><br></span> 증명할
             시간입니다.<br>
             <span class="mobile-display-none">
@@ -29,11 +29,14 @@
                     value="{{ form.password.data or '' }}">
             </div>
             <div class="text-center mobile-login">
-                <input class="form-login-check-input" type="checkbox" value="" id="autoLogin">
-                <label class="form-check-label logincheck" for="autoLogin" style="color:#6c757d;">로그인 저장</label>
-                <button type="button" class="btn btn btn-secondary"
-                    onclick="location.href='{{ url_for('auth.signup') }}'">계정생성</button></a>
-                <button type="submit" class="btn btn-primary ms-4" onClick="login()">로그인</button>
+                <div class="mobile-width-before-full">
+                    <input class="form-login-check-input" type="checkbox" value="" id="autoLogin">
+                    <label class="form-check-label logincheck" for="autoLogin" style="color:#6c757d;">로그인 저장</label>
+                </div>
+                <div class="mobile-width-after-full">
+                    <button type="button" class="btn btn btn-secondary" onclick="location.href='{{ url_for('auth.signup') }}'">계정생성</button></a>
+                    <button type="submit" class="btn btn-primary ms-4" onClick="login()">로그인</button>
+                </div>
             </div>
         </form>
     </div>
