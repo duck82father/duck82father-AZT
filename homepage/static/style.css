@@ -13,6 +13,30 @@
 }
 
 
+.form-login-check-input{
+    border: 1px solid #dee2e6;
+    border-radius: 0.378rem;
+    @media screen and (max-width: 1000px) {
+        margin-left:10%;
+        margin-bottom:1.5rem;
+    }
+}
+
+.logincheck {
+    margin-right:30px;
+    @media screen and (max-width: 1000px) {
+        margin-bottom:1.5rem;
+    }
+}
+
+.mobile-login{
+    padding-top: 1.5rem!important;
+    padding-bottom: 1.5rem!important;
+    @media screen and (max-width: 1000px) {
+        padding-top: 0.5rem!important;
+    }
+}
+
 .form-error-mobile {
     padding: 0!important;
     flex: 0 0 auto;

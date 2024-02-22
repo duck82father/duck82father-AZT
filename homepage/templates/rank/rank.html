@@ -55,8 +55,8 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
+                <p class="text-center text-opacity-75 mobile-display-only" style="color:#f3d514;"><br>▼</p>
             </div>
         </div>
 
@@ -75,7 +75,7 @@
                                 <button type="button" class="col-8 btn btn-primary rank-1st-content mobile-rank-font" disabled>{{user.comment}}</button>
                                 <button type="button" class="col-2 btn btn-primary rank-1st-content mobile-rank-font" disabled><b class="fw-bold">{{user.quiz_id_count}}</b>
                                     <span class="mobile-display-none"> / 120</span>
-                                    <span class="mobile-display-only">문제<br>클리어</span>
+                                    <span class="mobile-display-only">개<br>클리어</span>
                                 </button>
                             {% else %}
                                 <button type="button" class="col-1 btn btn-primary rank-nth-number mobile-rank-font" disabled>{{loop.index }}<span class="mobile-display-only">등<br><b class="fw-bold">{{user.username}}</b></span></span></button>
@@ -83,7 +83,7 @@
                                 <button type="button" class="col-8 btn btn-outline-primary rank-nth-content mobile-rank-font" disabled>{{user.comment}}</button>
                                 <button type="button" class="col-2 btn btn-outline-primary rank-nth-content mobile-rank-font" disabled><b class="fw-bold">{{user.quiz_id_count}}</b>
                                     <span class="mobile-display-none"> / 120</span>
-                                    <span class="mobile-display-only">문제<br>클리어</span>
+                                    <span class="mobile-display-only">개<br>클리어</span>
                                 </button>
                             {% endif %}
                         </div>

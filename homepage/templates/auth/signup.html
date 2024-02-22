@@ -16,12 +16,12 @@
             {{ form.csrf_token }}
             {% include "form_errors.html" %}
             <div class="mb-3 pt-4">
-                <label for="username" class="mb-2 fw-bold">이름 또는 닉네임 <b class="h6" style="font-size: 0.75rem;">/ 한글도 가능합니다</b></label>
+                <label for="username" class="mb-2 fw-bold">이름 또는 닉네임 <b class="h6" style="font-size: 0.75rem;">/&nbsp;&nbsp;<span class="fw-bold" style="color:#1521c2;">한글아이디</span>를 추천합니다</b></label>
                 <input type="text" class="form-control mb-4" name="username" id="username"
                     value="{{ form.username.data or '' }}">
             </div>
             <div class="mb-3">
-                <label for="password1" class="mb-2 fw-bold">비밀번호 <b class="h6" style="font-size: 0.75rem;">/ 기억하기 쉬운 간단한 번호로!</b></label></label>
+                <label for="password1" class="mb-2 fw-bold">비밀번호 <b class="h6" style="font-size: 0.75rem;">/&nbsp;&nbsp;기억하기 쉬운 간단한 번호로!</b></label></label>
                 <input type="password" class="form-control mb-4" name="password1" id="password1"
                     value="{{ form.password1.data or '' }}">
             </div>
@@ -31,7 +31,7 @@
                     value="{{ form.password2.data or '' }}">
             </div>
             <div class="mb-3">
-                <label for="email" class="mb-2 fw-bold">이메일 <b class="h6" style="font-size: 0.75rem;">/ 가짜 계정도 괜찮아요!</b></label>
+                <label for="email" class="mb-2 fw-bold">이메일 <b class="h6" style="font-size: 0.75rem;">/&nbsp;&nbsp;가짜 계정도 괜찮아요!</b></label>
                 <input type="text" class="form-control mb-4" name="email" id="email"
                     value="{{ form.email.data or '' }}">
             </div>

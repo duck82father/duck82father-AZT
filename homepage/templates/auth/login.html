@@ -14,7 +14,7 @@
         <div class="text-center py-4">
             <h4 class="mb-3 nav-font h4">로그인</h4>
         </div>
-        <form method="post">
+        <form name="loginForm" method="post">
             {{ form.csrf_token }}
             {% include "form_errors.html" %}
             <div class="mb-3">
@@ -27,7 +27,9 @@
                 <input type="password" class="form-control mb-4" name="password" id="password"
                     value="{{ form.password.data or '' }}">          
             </div>
-            <div class="text-center py-4">
+            <div class="text-center mobile-login">
+                <input class="form-login-check-input" type="checkbox" value="" id="logincheck">
+                <label class="form-check-label logincheck" for="logincheck" style="color:#6c757d;">로그인 저장</label>
                 <button type="button" class="btn btn btn-secondary" onclick="location.href='{{ url_for('auth.signup') }}'">계정생성</button></a>
                 <button type="submit" class="btn btn-primary ms-4">로그인</button>
             </div>
@@ -35,4 +37,6 @@
     </div>
     <div class="py-4 mobile-display-none">&nbsp;</div>
 </div>
+
+
 {% endblock content %}
