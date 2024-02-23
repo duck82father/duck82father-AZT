@@ -41,6 +41,15 @@
     list-style-type: disc;
 }
 
+.card-text h4 {
+    font-weight:600;
+    line-height: 1.2;
+    padding-top: 20px;
+    font-size: 1.4rem;
+    margin-bottom: 1.4rem;
+    margin-top: 0;
+}
+
 .card-text{
     @media screen and (max-width: 1000px) {
         font-size:0.9em;
@@ -519,7 +528,7 @@ body {
 
 .nav-font {
     font-family: 'EliceDigitalBaeum_Bold';
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.05rem;
 }
 
 .introduce-font {
