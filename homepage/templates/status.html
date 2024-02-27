@@ -232,7 +232,6 @@
 
         // 모바일 힌트 버튼
         hintButton.addEventListener('click', function (e) {
-            console.log('click')
             if (quiznumber > 0) {
                 xhr.open('POST', 'api/endpoint', true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
@@ -378,7 +377,13 @@
             const firstUnSolvedDiv = unSolvedDivs[0];
 
             // 가장 작은 id를 가진 div 요소를 스크롤합니다.
-            firstUnSolvedDiv.scrollIntoView({ behavior: 'smooth', block: "center", inline: "center" })
+            firstUnSolvedDiv.scrollIntoView({ behavior: 'smooth', block: "center", inline: "center" });
+
+            const fisrtResult = firstUnSolvedDiv.id.substring(11);
+            sendMessageQuiz(fisrtResult, 'yourmsg');
+            toScrollMoving(fisrtResult);
+            
+            
         }
 
         const pageWidth = document.documentElement.scrollWidth;
