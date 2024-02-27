@@ -159,6 +159,7 @@
                             hintButton.innerHTML = result;
                             circle = document.getElementById(quiznumber+'circle');
                             circle.setAttribute('class', 'circle-solved all-circle');
+                            goToFirstUnSolvedDiv();
                             if (solvedCount == 120) {
                                 const toastLiveExample = document.getElementById('liveToast')
                                 document.getElementById('toastText').innerHTML = '🌈 축하합니다! 모든 문제를 문제 맞추셨습니다! 🌈';
@@ -313,26 +314,35 @@
                 elementBox.setAttribute('class', 'col-10 card azcard m-3 selected_quiz')
                 elementText.setAttribute('style', 'word-break:keep-all; color:#916e07;')
             }
-            elementBoxGlobal = elementBox
-            elementTextGlobal = elementText
+            elementBoxGlobal = elementBox;
+            elementTextGlobal = elementText;
             hintButton.innerHTML = '초성 힌트';
             hintButton.setAttribute('style', '');
         }
 
         function changeDivSpan(quiznumber, answer) {
-            unSolvedSpan = document.getElementById('unSolvedSpan' + quiznumber)
-            unSolvedDiv = document.getElementById('unSolvedDiv' + quiznumber)
-            unSolvedSpanQuizId = document.getElementById('unSolvedSpanQuizId' + quiznumber)
-            quizCardBody = document.getElementById('quizCardBody' + quiznumber)
-            quiz = document.getElementById('quiz' + quiznumber)
-            score = document.getElementById('score' + quiznumber)
-            unSolvedSpan.innerHTML = answer
-            unSolvedSpan.setAttribute('class', 'col-7 text-end p-2 text-light fw-bold')
-            unSolvedDiv.setAttribute('class', 'container card-footer quizsuccess')
-            unSolvedSpanQuizId.setAttribute('class', 'col-5 p-2 fs-6 fw-bold quizsuccess-number')
-            quizCardBody.setAttribute('class', 'card-body text-quiz quizsuccess-top')
-            quiz.setAttribute('class', 'card-title fs-5 text fw-bold lh-base quizsuccess-text')
-            score.setAttribute('class', 'circle-solved')
+            unSolvedSpan = document.getElementById('unSolvedSpan' + quiznumber);
+            unSolvedSpan.setAttribute('class', 'col-7 text-end p-2 text-light fw-bold');
+            unSolvedSpan.setAttribute('id', '');
+            
+            unSolvedDiv = document.getElementById('unSolvedDiv' + quiznumber);
+            unSolvedDiv.setAttribute('class', 'container card-footer quizsuccess');
+            unSolvedDiv.setAttribute('id', '');
+
+            unSolvedSpanQuizId = document.getElementById('unSolvedSpanQuizId' + quiznumber);
+            unSolvedSpanQuizId.setAttribute('class', 'col-5 p-2 fs-6 fw-bold quizsuccess-number');
+            unSolvedSpanQuizId.setAttribute('id', '');
+
+            quizCardBody = document.getElementById('quizCardBody' + quiznumber);
+            quizCardBody.setAttribute('class', 'card-body text-quiz quizsuccess-top');
+
+            quiz = document.getElementById('quiz' + quiznumber);
+            quiz.setAttribute('class', 'card-title fs-5 text fw-bold lh-base quizsuccess-text');
+
+            score = document.getElementById('score' + quiznumber);
+            score.setAttribute('class', 'circle-solved');
+
+            unSolvedSpan.innerHTML = answer;
         }
 
         function addSolvedCountNumber() {
@@ -369,20 +379,25 @@
             });
         });
 
+
         function goToFirstUnSolvedDiv() {
             // id가 'unSolvedDiv*'인 모든 div 요소를 찾습니다.
             const unSolvedDivs = document.querySelectorAll("div[id^='unSolvedDiv']");
 
-            // 가장 작은 id를 가진 div 요소를 반환합니다.
-            const firstUnSolvedDiv = unSolvedDivs[0];
+            console.log(unSolvedDivs);
 
-            // 가장 작은 id를 가진 div 요소를 스크롤합니다.
-            firstUnSolvedDiv.scrollIntoView({ behavior: 'smooth', block: "center", inline: "center" });
+            if (unSolvedDivs) {
 
-            const fisrtResult = firstUnSolvedDiv.id.substring(11);
-            sendMessageQuiz(fisrtResult, 'yourmsg');
-            toScrollMoving(fisrtResult);
-            
+                // 가장 작은 id를 가진 div 요소를 반환합니다.
+                const firstUnSolvedDiv = unSolvedDivs[0];
+
+                // 가장 작은 id를 가진 div 요소를 스크롤합니다.
+                firstUnSolvedDiv.scrollIntoView({ behavior: 'smooth', block: "center", inline: "center" });
+
+                const fisrtResult = firstUnSolvedDiv.id.substring(11);
+                sendMessageQuiz(fisrtResult, 'yourmsg');
+                toScrollMoving(fisrtResult);
+            }
             
         }
 
