@@ -871,7 +871,7 @@ body {
     color: #333;
     margin: 60px 100px 56px 56px;
     overflow: hidden;
-    height: 80vh;
+    height: 82vh;
     /* 화면 높이로 설정 */
 
     @media screen and (max-width: 1000px) {
