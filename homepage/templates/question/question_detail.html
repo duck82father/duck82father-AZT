@@ -18,7 +18,7 @@
 
             <!-- 추천, 작성자, 저장 시간 시작 -->
 			<div class="row">
-                <div class="col-6 mt-3 mobile-width-hundred ">
+                <div class="col-6 mt-3 mobile-width-hundred">
                     <a href="javascript:void(0)" data-uri="{{ url_for('question.vote', question_id=question.id) }}"
                     class="recommend btn btn-sm btn-outline-secondary mobile-text-alttle-small">추천
                         <span class="badge rounded-pill bg-success">{{ question.voter|length }}</span>
@@ -43,6 +43,7 @@
                         <div>{{ question.create_date|datetime }}</div>
                     </div>
                 </div>		
+
 			</div>            
 			<!-- 추천, 작성자, 저장 시간 끝 -->
 
@@ -58,7 +59,7 @@
             <div class="card-text my-2">{{ answer.content|markdown }}</div>
 
             <div class="row">
-                <div class="col-6 mt-3">
+                <div class="col-6 mt-3 mobile-width-hundred">
                     <a href="javascript:void(0)" data-uri="{{ url_for('answer.vote', answer_id=answer.id) }}"
                     class="recommend btn btn-sm btn-outline-secondary">추천
                         <span class="badge rounded-pill bg-success">{{ answer.voter|length }}</span>
@@ -66,7 +67,7 @@
                     {% if g.user == answer.user %}
                     <a href="{{ url_for('answer.modify', answer_id=answer.id) }}"
                     class="btn btn-sm btn-outline-secondary">수정</a>
-                    <a href="#" class="delete btn btn-sm btn-outline-secondary "
+                    <a href="#" class="delete btn btn-sm btn-outline-secondary"
                     data-uri="{{ url_for('answer.delete', answer_id=answer.id) }}">삭제</a>
                     {% endif %}
                 </div>
@@ -74,18 +75,18 @@
 
                 <div class="col-6 d-flex justify-content-end">
                     {% if answer.modify_date %}
-                    <div class="badge bg-light text-dark p-2 text-start mx-3 mobile-display-none">
+                    <div class="badge bg-light text-dark p-2 text-start mx-3 bg-white mobile-display-none">
                         <div class="mb-2">modified at</div>
                         <div>{{ answer.modify_date|datetime }}</div>
                     </div>
                     {% endif %}
-                    <div class="badge bg-light text-dark p-2 text-start mobile-display-none">
+                    <div class="badge bg-light text-dark p-2 text-start bg-white mobile-display-none">
                         <div class="mb-2">{{ answer.user.username }}</div>
                         <div>{{ answer.create_date|datetime }}</div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
     {% endfor %}
