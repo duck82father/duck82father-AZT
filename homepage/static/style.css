@@ -967,6 +967,25 @@ body {
     line-height: 1.5em;
 }
 
+.chat .item .answerBox::before {
+    border-right: 8px solid #baffba;
+}
+
+.chat .item .box .answerMsg {
+    background: #baffba;;
+}
+
+.chat .item .allClearBox::before {
+    border-right: 8px solid #ffc548;
+}
+
+.chat .item .box .allClearMsg {
+    background: #ffc548;;
+    color:#000000;
+    /* text-shadow: 0px 0px 5px #ffdfa3; */
+    font-weight: 900;
+}
+
 .chat .item .box .h6 {
     @media screen and (max-width: 1000px) {
         font-size: 1em;
@@ -982,22 +1001,22 @@ body {
     width: 70px;
 }
 
-.chat .item.mymsg {
+.chat .item .mymsg {
     text-align: right;
 }
 
-.chat .item.mymsg .box::before {
+.chat .item .mymsg .box::before {
     left: auto;
     right: -8px;
     border-left: 8px solid #ffef61;
     border-right: 0;
 }
 
-.chat .item.mymsg .box .msg {
+.chat .item .mymsg .box .msg {
     background: #ffef61;
 }
 
-.chat .item.mymsg .box .time {
+.chat .item .mymsg .box .time {
     right: auto;
     left: -75px;
 }

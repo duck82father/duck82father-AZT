@@ -152,14 +152,15 @@
                             circle.setAttribute('style', 'background-color:#fff494;box-shadow:0.5px 0.5px 3px #272b33;');
                         } else if (resulttype == 'answer') {
                             clearCheckBox();
-                            sendMessage(result, 'yourmsg');
+                            sendMessageAnswer(result, 'yourmsg');
                             changeDivSpan(quiznumber, answer);
                             addSolvedCountNumber();
-                            hintButton.setAttribute('style', 'background: #99FF99;');
-                            hintButton.innerHTML = result;
                             circle = document.getElementById(quiznumber+'circle');
                             circle.setAttribute('class', 'circle-solved all-circle');
                             goToFirstUnSolvedDiv();
+                            hintButton.setAttribute('style', 'background: #99FF99;');
+                            hintButton.innerHTML = result;
+                            console.log(solvedCount);
                             if (solvedCount == 120) {
                                 const toastLiveExample = document.getElementById('liveToast')
                                 document.getElementById('toastText').innerHTML = '🌈 축하합니다! 모든 문제를 문제 맞추셨습니다! 🌈';
@@ -173,12 +174,14 @@
                                 toastBootstrap.show();
                             } else {
                             };
-                            quiznumber = 0
                         } else if (resulttype == 'alreadySolved') {
                             hintButton.innerHTML = result;
                             hintButton.setAttribute('style', 'background: #CCFFFF;');
                             sendMessage(result, 'yourmsg');
-                            quiznumber = 0
+                        } else if (resulttype == 'hint') {
+                            hintButton.innerHTML = result;
+                            hintButton.setAttribute('style', 'background: #fff494;');
+                            sendMessage(result, 'yourmsg');
                         } else {
                             sendMessage(result, 'yourmsg');
                             hintButton.innerHTML = result;
@@ -233,6 +236,7 @@
 
         // 모바일 힌트 버튼
         hintButton.addEventListener('click', function (e) {
+            console.log("hint : " + quiznumber);
             if (quiznumber > 0) {
                 xhr.open('POST', 'api/endpoint', true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
@@ -247,7 +251,6 @@
                     }
                 };
                 var data = { key:'hint', quiznumber: quiznumber };
-                console.log(data);
                 xhr.send(JSON.stringify(data));
             }
         });
@@ -265,6 +268,38 @@
             var newDiv = document.createElement('div');
             newDiv.className = 'item ' + className;
             newDiv.innerHTML = '<div class="box"><p class="msg h6">' + message + '</p><span class="time">' + currentTime() + '</span></div>';
+
+            chatInner.appendChild(newDiv);
+
+            var lastItem = chatInner.lastChild;
+            setTimeout(function () {
+                lastItem.classList.add("on");
+            }, 10);
+
+            var position = lastItem.offsetTop + chatInner.scrollTop;
+            chatInner.scrollTop = position;
+        }
+
+        function sendMessageAnswer(message, className) {
+            var newDiv = document.createElement('div');
+            newDiv.className = 'item ' + className;
+            newDiv.innerHTML = '<div class="box answerBox"><p class="msg h6 answerMsg">' + message + '</p><span class="time">' + currentTime() + '</span></div>';
+
+            chatInner.appendChild(newDiv);
+
+            var lastItem = chatInner.lastChild;
+            setTimeout(function () {
+                lastItem.classList.add("on");
+            }, 10);
+
+            var position = lastItem.offsetTop + chatInner.scrollTop;
+            chatInner.scrollTop = position;
+        }
+
+        function sendMessageAllClear(message, className) {
+            var newDiv = document.createElement('div');
+            newDiv.className = 'item ' + className;
+            newDiv.innerHTML = '<div class="box allClearBox"><p class="msg h6 allClearMsg">' + message + '</p><span class="time">' + currentTime() + '</span></div>';
 
             chatInner.appendChild(newDiv);
 
@@ -384,9 +419,7 @@
             // id가 'unSolvedDiv*'인 모든 div 요소를 찾습니다.
             const unSolvedDivs = document.querySelectorAll("div[id^='unSolvedDiv']");
 
-            console.log(unSolvedDivs);
-
-            if (unSolvedDivs) {
+            if (unSolvedDivs.length > 0) {
 
                 // 가장 작은 id를 가진 div 요소를 반환합니다.
                 const firstUnSolvedDiv = unSolvedDivs[0];
@@ -394,10 +427,18 @@
                 // 가장 작은 id를 가진 div 요소를 스크롤합니다.
                 firstUnSolvedDiv.scrollIntoView({ behavior: 'smooth', block: "center", inline: "center" });
 
-                const fisrtResult = firstUnSolvedDiv.id.substring(11);
-                sendMessageQuiz(fisrtResult, 'yourmsg');
-                toScrollMoving(fisrtResult);
-            }
+                const firstResult = firstUnSolvedDiv.id.substring(11);
+                sendMessageQuiz(firstResult, 'yourmsg');
+                toScrollMoving(firstResult);
+                quiznumber = firstResult;
+            } else {
+                const firstQuiz = document.getElementById('quiz1');
+                firstQuiz.scrollIntoView({ behavior: 'smooth', block: "center", inline: "center" });
+                sendMessageAllClear('축하합니다💐<br>모든 문제를 완료하셨어요<br>🧡 💛 💚 💙 💜 🤎 🤍', 'yourmsg');
+                
+                hintButton.setAttribute('style', 'background: #ffc548;font-weight: 900;');
+                hintButton.innerHTML = '모든문제<br>완료💐';
+            };
             
         }
 
@@ -408,8 +449,10 @@
         }
 
         inputPlaceHolder.addEventListener('click', function(){
-            hintButton.innerHTML = '초성 힌트';
-            hintButton.setAttribute('style', '');
+            if(!hintButton.getAttribute('style')){
+                hintButton.innerHTML = '초성 힌트';
+                hintButton.setAttribute('style', '');
+            };
         });
 
         sendMessage('<b class="fw-bold">{{ g.user.username }}</b>님 환영합니다!🖐️', 'yourmsg')

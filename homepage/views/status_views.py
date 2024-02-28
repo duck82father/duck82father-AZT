@@ -67,7 +67,7 @@ def api_endpoint():
         target_quiz = azquiz.query.get(quiznumber)
         if "힌트" in requestkey or "hint" in requestkey.lower():
             result = target_quiz.hint
-            resulttype = "order"
+            resulttype = "hint"
         else:
             if requestkey == target_quiz.answer:
                 if Solved.query.filter_by(user_id=g.user.id, quiz_id=quiznumber).first() != None:
